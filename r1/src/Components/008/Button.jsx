@@ -1,4 +1,4 @@
-function Button({clickButton, clickPlus, clickRed, clickAddSrs}) {
+function Button({clickButton, clickPlus, clickRed, clickAddSrs, clickRemSrs}) {
 
     return (
         <>
@@ -6,7 +6,7 @@ function Button({clickButton, clickPlus, clickRed, clickAddSrs}) {
         <button onClick={clickPlus}>Plus</button>
         <button onClick={clickRed}>Ja ja RED</button>
         <button onClick={clickAddSrs}>Add []</button>
-
+        <button onClick={clickRemSrs}>Remove []</button>
         
         </>
     )

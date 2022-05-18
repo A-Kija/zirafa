@@ -22,6 +22,7 @@ function App() {
     const clickRed = () => setRed(r => !r);
 
     const clickAddSrs = () => setSrs(s => [...s, 1]);
+    const clickRemSrs = () => setSrs(s => s.slice(1));
 
     return (
         <div className="App">
@@ -33,7 +34,7 @@ function App() {
                         padding: '7px'
                     }
                     }>{nr}</span></h1>
-                <Button clickAddSrs={clickAddSrs} clickRed={clickRed} clickButton={clickButton} clickPlus={clickPlus}></Button>
+                <Button clickRemSrs={clickRemSrs} clickAddSrs={clickAddSrs} clickRed={clickRed} clickButton={clickButton} clickPlus={clickPlus}></Button>
                 <MrGreen mrGreen={mrGreen}></MrGreen>
                 <div className="square-garden">
                     {
