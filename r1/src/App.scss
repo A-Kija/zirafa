@@ -267,5 +267,8 @@ button {
         height: 77px;
         background-color: crimson;
         margin: 8px;
+        &.c1 {
+            border-radius: 50%;
+        }
     }
 }

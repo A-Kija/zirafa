@@ -38,7 +38,7 @@ function App() {
                 <MrGreen mrGreen={mrGreen}></MrGreen>
                 <div className="square-garden">
                     {
-                      srs.map((_,i) => <Square key={i}></Square>)  
+                      srs.map((_,i) => <Square which={i} key={i}></Square>)  
                     }
                 </div>
             </header>
