@@ -252,3 +252,20 @@ button {
     height: 100px;
     border: 1px solid snow;
 }
+
+.square-garden {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .small-red-square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        width: 77px;
+        height: 77px;
+        background-color: crimson;
+        margin: 8px;
+    }
+}
