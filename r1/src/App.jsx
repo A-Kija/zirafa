@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import Square from './Components/009/Square';
 import axios from 'axios';
+import User from './Components/009/User';
 function App() {
 
     const [ sq, setSq] = useState([]);
@@ -15,7 +16,6 @@ function App() {
             console.log(res.data);
             setUsers(res.data);
         })
-
     }, []);
 
 
@@ -30,6 +30,10 @@ function App() {
                     sq.map((_, i) => <Square key={i} i={i}></Square>)
                 }
             </div>
+
+            {
+                users.map(u => <User key={u.id} user={u}></User>)
+            }
             </header>
         </div>
     );
