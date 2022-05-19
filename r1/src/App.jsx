@@ -3,27 +3,37 @@ import './App.scss';
 import Square from './Components/009/Square';
 import axios from 'axios';
 import User2 from './Components/009/User2';
+import Post from './Components/009/Post';
 function App() {
 
     const [ sq, setSq] = useState([]);
     const add = () => setSq(s => [...s, 1]);
 
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
 
-    const [users2, setUsers2] = useState([]);
+    // const [users2, setUsers2] = useState([]);
+
+    const [posts, setPosts] = useState([]);
+
+    // useEffect(() => {
+    //     axios.get('https://jsonplaceholder.typicode.com/users')
+    //     .then(res => {
+    //         setUsers(res.data);
+    //     })
+    // }, []);
+
+    // useEffect(() => {
+    //     axios.get('https://dummyjson.com/users?limit=10')
+    //     .then(res => {
+    //         console.log(res.data.users);
+    //         setUsers2(res.data.users);
+    //     })
+    // }, []);
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(res => {
-            setUsers(res.data);
-        })
-    }, []);
-
-    useEffect(() => {
-        axios.get('https://dummyjson.com/users?limit=10')
-        .then(res => {
-            console.log(res.data.users);
-            setUsers2(res.data.users);
+            setPosts(res.data);
         })
     }, []);
 
@@ -41,7 +51,7 @@ function App() {
             </div>
 
             {
-                users2.map(u => <User2 key={u.id} user={u}></User2>)
+                posts.map(p => <Post key={p.id} post={p}></Post >)
             }
 
             </header>
