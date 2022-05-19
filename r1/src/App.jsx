@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import Square from './Components/009/Square';
+import axios from 'axios';
 function App() {
 
     const [ sq, setSq] = useState([]);
-
     const add = () => setSq(s => [...s, 1]);
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(res => {
+            console.log(res.data);
+            setUsers(res.data);
+        })
+
+    }, []);
 
 
     return (
