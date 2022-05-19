@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import Square from './Components/009/Square';
 import axios from 'axios';
-import User2 from './Components/009/User2';
+// import User2 from './Components/009/User2';
 import Post from './Components/009/Post';
 function App() {
 
@@ -51,7 +51,10 @@ function App() {
             </div>
 
             {
-                posts.map(p => <Post key={p.id} post={p}></Post >)
+                posts
+                .sort((a, b) => b.title.length - a.title.length)
+                .filter(p => [7, 5].indexOf(p.userId) !== -1)
+                .map((p, i) => <Post key={p.id} index={i} post={p}></Post >)
             }
 
             </header>
