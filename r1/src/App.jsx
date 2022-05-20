@@ -12,11 +12,16 @@ function App() {
     const [color, setColor] = useState('');
 
     const [list3, setList3] = useState([]);
-    const [select, setSelect] = useState(4);
+    const [select, setSelect] = useState('');
+
+    const [listSelect, setListSelect] = useState([]);
+    const [textSelect, setTextSelect] = useState('');
 
     const handleText = e => setText(e.target.value);
     const handleColor = e => setColor(e.target.value);
     const handleSelect = e => setSelect(e.target.value);
+    const handleTextSelect = e => setTextSelect(e.target.value);
+    
 
     const addTextToList = () => {
         if (text === '') {
@@ -27,6 +32,17 @@ function App() {
     }
     const addColorToList = () => setList2(l => [...l, color ? color : '#000000']);
     const addSelectToList = () => setList3(l => [...l, select]);
+    const addTextToSelect = () => {
+        if (textSelect === '') {
+            return;
+        }
+        setListSelect(l => [...l, textSelect]);
+        setTextSelect('');
+    }
+
+
+
+    
 
     const clearList1 = () => setList1([]);
     const clearList2 = () => setList2([]);
@@ -107,7 +123,19 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-
+                        <div className="card m-4">
+                            <div className="card-header">
+                                TEXT to SELECT
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Text input</label>
+                                    <input type="text" className="form-control" onChange={handleTextSelect} value={textSelect}></input>
+                                    <small className="form-text text-muted">Some little text.</small>
+                                </div>
+                                <button type="button" onClick={addTextToSelect} className="btn btn-outline-primary">Add to Select</button>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-4">
                         <div className="card m-4">
@@ -118,11 +146,11 @@ function App() {
                                 <div className="form-group">
                                     <label>Select</label>
                                     <select className="form-control" onChange={handleSelect} value={select}>
-                                        <option value="1">V-1</option>
-                                        <option value="2">V-2</option>
-                                        <option value="3">V-3</option>
-                                        <option value="4">V-4</option>
-                                        <option value="5">V-5</option>
+                                        <option value="" disabled>SELECT</option>
+                                        {
+                                            listSelect.map((v, i) => <option key={i} value={v}>{v}</option>)
+                                        }
+
                                     </select>
                                 </div>
                                 <button type="button" onClick={addSelectToList} className="btn btn-outline-success">Add to List</button>
