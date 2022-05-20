@@ -6,11 +6,28 @@ import './bootstrap.css';
 function App() {
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>FORMS</h1>
-                <input type="text"></input>
-            </header>
+        <div classNameName="App">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                TEXT
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Text input</label>
+                                    <input type="text" className="form-control"></input>
+                                    <small className="form-text text-muted">Some little text.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+                        One of three columns
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
