@@ -31,7 +31,12 @@ function App() {
         setText('');
     }
     const addColorToList = () => setList2(l => [...l, color ? color : '#000000']);
-    const addSelectToList = () => setList3(l => [...l, select]);
+    const addSelectToList = () => {
+        if (select === '') {
+            return;
+        }
+        setList3(l => [...l, select]);
+    }
     const addTextToSelect = () => {
         if (textSelect === '') {
             return;
