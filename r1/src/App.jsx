@@ -7,11 +7,11 @@ function App() {
 
     const [list1, setList1] = useState([]);
     const [text, setText] = useState('');
+    const [list2, setList2] = useState([]);
+    const [color, setColor] = useState('');
 
-    const handleText = e => {
-        // setList1(l => [...l, e.target.value]);
-        setText(e.target.value);
-    }
+    const handleText = e => setText(e.target.value);
+    const handleColor = e => setColor(e.target.value);
 
     const addTextToList = () => {
         if (text === '') {
@@ -20,8 +20,10 @@ function App() {
         setList1(l => [...l, text]);
         setText('');
     }
+    const addColorToList = () => setList2(l => [...l, color ? color : '#000000']);
 
     const clearList1 = () => setList1([]);
+    const clearList2 = () => setList2([]);
 
     return (
         <div>
@@ -70,10 +72,10 @@ function App() {
                             <div className="card-body">
                                 <div className="form-group">
                                     <label>Color input</label>
-                                    <input type="color" className="form-control" onChange={handleText} value={text}></input>
+                                    <input type="color" className="form-control" onChange={handleColor} value={color}></input>
                                     <small className="form-text text-muted">Some nice color.</small>
                                 </div>
-                                <button type="button" onClick={addTextToList} className="btn btn-outline-primary">Add to List</button>
+                                <button type="button" onClick={addColorToList} className="btn btn-outline-primary">Add to List</button>
                             </div>
                         </div>
                     </div>
@@ -83,10 +85,10 @@ function App() {
                                 COLOR LIST
                             </div>
                             <div className="card-body">
-                            <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
+                            <button type="button" onClick={clearList2} className="btn btn-outline-danger">Clear List</button>
                                 <ul className="list-group mt-2">
                                     {
-                                    list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    list2.map((t, i) => <li key={i} className="list-group-item" style={{backgroundColor:t}}></li>)
                                     }
                                 </ul>
                             </div>
