@@ -14,9 +14,14 @@ function App() {
     }
 
     const addTextToList = () => {
+        if (text === '') {
+            return;
+        }
         setList1(l => [...l, text]);
         setText('');
     }
+
+    const clearList1 = () => setList1([]);
 
     return (
         <div>
@@ -43,7 +48,8 @@ function App() {
                                 TEXT LIST
                             </div>
                             <div className="card-body">
-                                <ul className="list-group">
+                            <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
+                                <ul className="list-group mt-2">
                                     {
                                     list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
                                     }
