@@ -106,7 +106,10 @@ function App() {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-sm">
+                    <div className="col-4">
+
+                    </div>
+                    <div className="col-4">
                         <div className="card m-4">
                             <div className="card-header">
                                 SELECT
@@ -126,7 +129,7 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm">
+                    <div className="col-4">
                         <div className="card m-4">
                             <div className="card-header">
                                 SELECT LIST
