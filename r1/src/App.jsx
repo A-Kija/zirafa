@@ -59,6 +59,41 @@ function App() {
                     </div>
                 </div>
             </div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                COLOR
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Color input</label>
+                                    <input type="color" className="form-control" onChange={handleText} value={text}></input>
+                                    <small className="form-text text-muted">Some nice color.</small>
+                                </div>
+                                <button type="button" onClick={addTextToList} className="btn btn-outline-primary">Add to List</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                COLOR LIST
+                            </div>
+                            <div className="card-body">
+                            <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
+                                <ul className="list-group mt-2">
+                                    {
+                                    list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
