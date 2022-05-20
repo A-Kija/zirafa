@@ -50,10 +50,10 @@ function App() {
                                 TEXT LIST
                             </div>
                             <div className="card-body">
-                            <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
+                                <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
                                 <ul className="list-group mt-2">
                                     {
-                                    list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                        list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
                                     }
                                 </ul>
                             </div>
@@ -85,10 +85,10 @@ function App() {
                                 COLOR LIST
                             </div>
                             <div className="card-body">
-                            <button type="button" onClick={clearList2} className="btn btn-outline-danger">Clear List</button>
+                                <button type="button" onClick={clearList2} className="btn btn-outline-danger">Clear List</button>
                                 <ul className="list-group mt-2">
                                     {
-                                    list2.map((t, i) => <li key={i} className="list-group-item" style={{backgroundColor:t}}></li>)
+                                        list2.map((t, i) => <li key={i} className="list-group-item" style={{ backgroundColor: t }}></li>)
                                     }
                                 </ul>
                             </div>
@@ -96,6 +96,34 @@ function App() {
                     </div>
                 </div>
             </div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                SELECT
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Select</label>
+                                    <select className="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 }
