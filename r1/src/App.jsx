@@ -13,6 +13,11 @@ function App() {
         setText(e.target.value);
     }
 
+    const addTextToList = () => {
+        setList1(l => [...l, text]);
+        setText('');
+    }
+
     return (
         <div>
             <div className="container">
@@ -28,7 +33,7 @@ function App() {
                                     <input type="text" className="form-control" onChange={handleText} value={text}></input>
                                     <small className="form-text text-muted">Some little text.</small>
                                 </div>
-                                <button type="button" className="btn btn-outline-primary">Add to List</button>
+                                <button type="button" onClick={addTextToList} className="btn btn-outline-primary">Add to List</button>
                             </div>
                         </div>
                     </div>
