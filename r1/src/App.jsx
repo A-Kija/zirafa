@@ -1,13 +1,15 @@
 import './App.scss';
 import './bootstrap.css';
-import {useState} from 'react';
+import { useState } from 'react';
 
 
 function App() {
 
+    const [list1, setList1] = useState([]);
     const [text, setText] = useState('');
 
     const handleText = e => {
+        setList1(l => [...l, e.target.value]);
         setText(e.target.value);
     }
 
@@ -30,7 +32,18 @@ function App() {
                         </div>
                     </div>
                     <div className="col-sm">
-                        One of three columns
+                        <div className="card m-4">
+                            <div className="card-header">
+                                TEXT LIST
+                            </div>
+                            <div className="card-body">
+                                <ul className="list-group">
+                                    {
+                                    list1.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
