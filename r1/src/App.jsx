@@ -9,7 +9,7 @@ function App() {
     const [text, setText] = useState('');
 
     const handleText = e => {
-        setList1(l => [...l, e.target.value]);
+        // setList1(l => [...l, e.target.value]);
         setText(e.target.value);
     }
 
@@ -28,6 +28,7 @@ function App() {
                                     <input type="text" className="form-control" onChange={handleText} value={text}></input>
                                     <small className="form-text text-muted">Some little text.</small>
                                 </div>
+                                <button type="button" className="btn btn-outline-primary">Add to List</button>
                             </div>
                         </div>
                     </div>
