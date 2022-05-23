@@ -1,16 +1,24 @@
 import './App.scss';
 import './bootstrap.css';
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
 
+    const [cat, setCat] = useState(null);
+
+    useEffect(() => {
+        setCat(localStorage.getItem('katinukas'));
+    }, []);
+
     const addCat = () => {
         localStorage.setItem('katinukas', 'Vardu Pilkis');
+        setCat('Vardu Pilkis');
     }
 
     const removeCat = () => {
         localStorage.removeItem('katinukas');
+        setCat(null);
     }
 
     return (
@@ -20,7 +28,7 @@ function App() {
                     <div className="col-12">
                         <div className="card m-4">
                             <div className="card-header">
-                                {localStorage.getItem('katinukas')}
+                                {cat}
                             </div>
                             <div className="card-body">
                                 <button type="button" onClick={addCat} className="btn btn-outline-primary m-2">Add Cat</button>
