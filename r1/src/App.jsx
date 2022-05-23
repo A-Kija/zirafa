@@ -15,8 +15,13 @@ function App() {
     const [select, setSelect] = useState('');
 
     const [list4, setList4] = useState([]);
-    const [checkbox, setCheckbox] = useState({a: false, b: false, c:true, d:true});
+    const [checkbox, setCheckbox] = useState({ a: false, b: false, c: true, d: true });
 
+    const [list5, setList5] = useState([]);
+    const [oneCheckbox, setOneCheckbox] = useState(false);
+
+    const [list6, setList6] = useState([]);
+    const [radio, setRadio] = useState('option2');
 
     const [listSelect, setListSelect] = useState([]);
     const [textSelect, setTextSelect] = useState('');
@@ -25,11 +30,15 @@ function App() {
     const handleColor = e => setColor(e.target.value);
     const handleSelect = e => setSelect(e.target.value);
     const handleTextSelect = e => setTextSelect(e.target.value);
+    const handleRadio = e => setRadio(e.target.value);
 
     const handleCheckbox = which => {
-        setCheckbox(c => ({...c, [which]: !c[which]}));
+        setCheckbox(c => ({ ...c, [which]: !c[which] }));
     }
 
+    const handle1Checkbox = () => {
+        setOneCheckbox(c => !c);
+    }
 
     const addTextToList = () => {
         if (text === '') {
@@ -54,13 +63,20 @@ function App() {
     }
 
     const addCheckBoxToList = () => {
-        setList4(c => [...c,   ((checkbox.a ? 'A' : '') + 
-                                (checkbox.b ? 'B' : '') +
-                                (checkbox.c ? 'C' : '') +
-                                (checkbox.d ? 'D' : ''))
+        setList4(c => [...c, ((checkbox.a ? 'A' : '') +
+            (checkbox.b ? 'B' : '') +
+            (checkbox.c ? 'C' : '') +
+            (checkbox.d ? 'D' : ''))
         ]);
     }
 
+    const add1CheckBoxToList = () => {
+        setList5(l => [...l, oneCheckbox ? 'YES' : 'NO']);
+    }
+
+    const addRadioToList = () => {
+        setList6(l => [...l, radio]);
+    }
 
 
 
@@ -69,6 +85,8 @@ function App() {
     const clearList2 = () => setList2([]);
     const clearList3 = () => setList3([]);
     const clearList4 = () => setList4([]);
+    const clearList5 = () => setList5([]);
+    const clearList6 = () => setList6([]);
 
     return (
         <div className="cards-container">
@@ -206,19 +224,19 @@ function App() {
                             </div>
                             <div className="card-body">
                                 <div className="form-group form-check">
-                                    <input type="checkbox" className="form-check-input" value="A" onChange={()=>handleCheckbox('a')} checked={checkbox.a} />
+                                    <input type="checkbox" className="form-check-input" value="A" onChange={() => handleCheckbox('a')} checked={checkbox.a} />
                                     <label className="form-check-label">Check for A</label>
                                 </div>
                                 <div className="form-group form-check">
-                                    <input type="checkbox" className="form-check-input" value="B" onChange={()=>handleCheckbox('b')} checked={checkbox.b} />
+                                    <input type="checkbox" className="form-check-input" value="B" onChange={() => handleCheckbox('b')} checked={checkbox.b} />
                                     <label className="form-check-label">Check for B</label>
                                 </div>
                                 <div className="form-group form-check">
-                                    <input type="checkbox" className="form-check-input" value="C" onChange={()=>handleCheckbox('c')} checked={checkbox.c} />
+                                    <input type="checkbox" className="form-check-input" value="C" onChange={() => handleCheckbox('c')} checked={checkbox.c} />
                                     <label className="form-check-label">Check for C</label>
                                 </div>
                                 <div className="form-group form-check">
-                                    <input type="checkbox" className="form-check-input" value="D" onChange={()=>handleCheckbox('d')} checked={checkbox.d} />
+                                    <input type="checkbox" className="form-check-input" value="D" onChange={() => handleCheckbox('d')} checked={checkbox.d} />
                                     <label className="form-check-label">Check for D</label>
                                 </div>
                                 <button type="button" onClick={addCheckBoxToList} className="btn btn-outline-primary">Add to List</button>
@@ -242,6 +260,90 @@ function App() {
                     </div>
                 </div>
             </div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                1 CHECKBOX
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group form-check">
+                                    <input type="checkbox" className="form-check-input" onChange={handle1Checkbox} checked={oneCheckbox} />
+                                    <label className="form-check-label">Check for YES/NO</label>
+                                </div>
+
+                                <button type="button" onClick={add1CheckBoxToList} className="btn btn-outline-primary">Add to List</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                YES/NO CHECKBOX LIST
+                            </div>
+                            <div className="card-body">
+                                <button type="button" onClick={clearList5} className="btn btn-outline-danger">Clear List</button>
+                                <ul className="list-group mt-2">
+                                    {
+                                        list5.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                RADIO
+                            </div>
+                            <div className="card-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="ra" value="option1" onChange={handleRadio} checked={'option1' === radio}/>
+                                    <label className="form-check-label">
+                                        OPT 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="ra" value="option2" onChange={handleRadio} checked={'option2' === radio} />
+                                    <label className="form-check-label">
+                                        OPT 2
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="ra" value="option3" onChange={handleRadio} checked={'option3' === radio} />
+                                    <label className="form-check-label">
+                                        OPT 3
+                                    </label>
+                                </div>
+                                <button type="button" onClick={addRadioToList} className="btn btn-outline-primary mt-2">Add to List</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                RADIO LIST
+                            </div>
+                            <div className="card-body">
+                                <button type="button" onClick={clearList6} className="btn btn-outline-danger">Clear List</button>
+                                <ul className="list-group mt-2">
+                                    {
+                                        list6.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     );
