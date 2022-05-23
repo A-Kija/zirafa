@@ -23,10 +23,14 @@ function App() {
     const [list6, setList6] = useState([]);
     const [radio, setRadio] = useState('option3');
 
+    const [list7, setList7] = useState([]);
+    const [range, setRange] = useState('');
+
     const [listSelect, setListSelect] = useState([]);
     const [textSelect, setTextSelect] = useState('');
 
     const handleText = e => setText(e.target.value);
+    const handleRange = e => setRange(+e.target.value);
     const handleColor = e => setColor(e.target.value);
     const handleSelect = e => setSelect(e.target.value);
     const handleTextSelect = e => setTextSelect(e.target.value);
@@ -47,6 +51,11 @@ function App() {
         setList1(l => [...l, text]);
         setText('');
     }
+
+    const addRangeToList = () => {
+        setList7(l => [...l, range]);
+    }
+
     const addColorToList = () => setList2(l => [...l, color ? color : '#000000']);
     const addSelectToList = () => {
         if (select === '') {
@@ -87,6 +96,7 @@ function App() {
     const clearList4 = () => setList4([]);
     const clearList5 = () => setList5([]);
     const clearList6 = () => setList6([]);
+    const clearList7 = () => setList7([]);
 
     return (
         <div className="cards-container">
@@ -336,6 +346,42 @@ function App() {
                                 <ul className="list-group mt-2">
                                     {
                                         list6.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                RANGE
+                            </div>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Rnge input</label>
+                                    <input type="range" className="form-control" min="1" max="100" onChange={handleRange} value={range}></input>
+                                    <small className="form-text text-muted">Slide a little.</small>
+                                </div>
+                                <button type="button" onClick={addRangeToList} className="btn btn-outline-primary">Add to List</button>
+                                <h3>{list7.reduce((previousValue, currentValue) => + previousValue + currentValue, 0)}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm">
+                        <div className="card m-4">
+                            <div className="card-header">
+                                RANGE LIST
+                            </div>
+                            <div className="card-body">
+                                <button type="button" onClick={clearList7} className="btn btn-outline-danger">Clear List</button>
+                                <ul className="list-group mt-2">
+                                    {
+                                        list7.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
                                     }
                                 </ul>
                             </div>
