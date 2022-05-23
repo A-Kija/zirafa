@@ -24,7 +24,7 @@ function App() {
     const [radio, setRadio] = useState('option3');
 
     const [list7, setList7] = useState([]);
-    const [range, setRange] = useState('');
+    const [range, setRange] = useState(1);
 
     const [listSelect, setListSelect] = useState([]);
     const [textSelect, setTextSelect] = useState('');
@@ -368,7 +368,7 @@ function App() {
                                     <small className="form-text text-muted">Slide a little.</small>
                                 </div>
                                 <button type="button" onClick={addRangeToList} className="btn btn-outline-primary">Add to List</button>
-                                <h3>{list7.reduce((previousValue, currentValue) => + previousValue + currentValue, 0)}</h3>
+                                <h3>{list7.reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)}</h3>
                             </div>
                         </div>
                     </div>
