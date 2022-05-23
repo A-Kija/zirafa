@@ -24,8 +24,6 @@ function App() {
     }
 
 
-
-
     const addOne = () => {
         setCount(c => {
             localStorage.setItem('one', c + 1);
