@@ -21,7 +21,7 @@ function App() {
     const [oneCheckbox, setOneCheckbox] = useState(false);
 
     const [list6, setList6] = useState([]);
-    const [radio, setRadio] = useState('option2');
+    const [radio, setRadio] = useState('option3');
 
     const [listSelect, setListSelect] = useState([]);
     const [textSelect, setTextSelect] = useState('');
