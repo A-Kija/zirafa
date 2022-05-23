@@ -272,3 +272,8 @@ button.a {
         }
     }
 }
+
+.cards-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
