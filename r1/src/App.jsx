@@ -53,6 +53,14 @@ function App() {
         setTextSelect('');
     }
 
+    const addCheckBoxToList = () => {
+        setList4(c => [...c,   ((checkbox.a ? 'A' : '') + 
+                                (checkbox.b ? 'B' : '') +
+                                (checkbox.c ? 'C' : '') +
+                                (checkbox.d ? 'D' : ''))
+        ]);
+    }
+
 
 
 
@@ -60,6 +68,7 @@ function App() {
     const clearList1 = () => setList1([]);
     const clearList2 = () => setList2([]);
     const clearList3 = () => setList3([]);
+    const clearList4 = () => setList4([]);
 
     return (
         <div className="cards-container">
@@ -212,7 +221,7 @@ function App() {
                                     <input type="checkbox" className="form-check-input" value="D" onChange={()=>handleCheckbox('d')} checked={checkbox.d} />
                                     <label className="form-check-label">Check for D</label>
                                 </div>
-                                <button type="button" onClick={addTextToList} className="btn btn-outline-primary">Add to List</button>
+                                <button type="button" onClick={addCheckBoxToList} className="btn btn-outline-primary">Add to List</button>
                             </div>
                         </div>
                     </div>
@@ -222,7 +231,7 @@ function App() {
                                 CHECKBOX LIST
                             </div>
                             <div className="card-body">
-                                <button type="button" onClick={clearList1} className="btn btn-outline-danger">Clear List</button>
+                                <button type="button" onClick={clearList4} className="btn btn-outline-danger">Clear List</button>
                                 <ul className="list-group mt-2">
                                     {
                                         list4.map((t, i) => <li key={i} className="list-group-item">{t}</li>)
