@@ -158,7 +158,7 @@ function App() {
                                     </div>
                                     <button type="button" onClick={reset} className="btn btn-outline-danger m-2">RESET</button>
                                     <div className="square-garden">
-                                        <div className="small-red-square" style={
+                                        <div onClick={reset} className="small-red-square" style={
                                             {
                                                 backgroundColor: cb ? 'crimson' : 'black',
                                                 borderRadius: cb1 ? '50%' : null
