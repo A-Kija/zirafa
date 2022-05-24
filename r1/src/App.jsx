@@ -7,7 +7,7 @@ function App() {
 
     const [cat, setCat] = useState(null);
 
-    const [niceText, setNiceText] = useState(null);
+    const [niceText, setNiceText] = useState('#ff0000');
 
     const [count, setCount] = useState(null);
 
@@ -116,13 +116,13 @@ useEffect(() => {
                                     <button type="button" onClick={remKv} className="btn btn-outline-primary m-2">Remove []</button>
                                     <div className="form-group">
                                     <label>Color input</label>
-                                    <input type="text" className="form-control" onChange={e => setNiceText(e.target.value)} value={niceText}></input>
-                                    <small className="form-text text-muted">Some nice text.</small>
+                                    <input type="color" className="form-control" onChange={e => setNiceText(e.target.value)} value={niceText}></input>
+                                    <small className="form-text text-muted">Some nice color.</small>
                                 </div>
                                 </div>
                                 <div className="square-garden">
                                     {
-                                        kv.map((n, i) => <div key={i} className="small-red-square">{n}</div>)
+                                        kv.map((n, i) => <div key={i} className="small-red-square" style={{backgroundColor: n}}></div>)
                                     }
                                 </div>
                             </div>
