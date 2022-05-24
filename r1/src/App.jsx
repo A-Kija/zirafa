@@ -9,6 +9,8 @@ function App() {
 
     const [count, setCount] = useState(null);
 
+    const [kv, setKv] = useState([]);
+
     useEffect(() => {
         setCat(JSON.parse(localStorage.getItem('katinukas')));
     }, []);
@@ -23,7 +25,6 @@ function App() {
         setCat(null);
     }
 
-
     const addOne = () => {
         setCount(c => {
             localStorage.setItem('one', c + 1);
@@ -34,6 +35,10 @@ function App() {
     useEffect(() => {
         setCount(parseInt(localStorage.getItem('one') ?? 1));
     }, []);
+
+    const addKv = () => {
+        setKv(k => [...k, 1]);
+    }
 
     return (
         <>
@@ -67,6 +72,28 @@ function App() {
                                 </div>
                                 <div className="card-body">
                                     <button type="button" onClick={addOne} className="btn btn-outline-primary m-2">Add 1</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="cards-container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="card m-4">
+                                <div className="card-header">
+                                    Kvadratukai
+                                </div>
+                                <div className="card-body">
+                                    <button type="button" onClick={addKv} className="btn btn-outline-primary m-2">Add []</button>
+                                </div>
+                                <div className="square-garden">
+                                    {
+                                        kv.map((_, i) => <div key={i} className="small-red-square"></div>)
+                                    }
                                 </div>
                             </div>
                         </div>
