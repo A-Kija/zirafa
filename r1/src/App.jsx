@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+    const [cb, setCb] = useState(false);
+
     const [cat, setCat] = useState(null);
 
     const [niceText, setNiceText] = useState('#ff0000');
@@ -26,7 +28,7 @@ function App() {
         localStorage.removeItem('katinukas');
         setCat(null);
     }
-// 
+    // 
     const addOne = () => {
         setCount(c => {
             localStorage.setItem('one', c + 1);
@@ -37,28 +39,28 @@ function App() {
     useEffect(() => {
         setCount(parseInt(localStorage.getItem('one') ?? 1));
     }, []);
-// 
+    // 
 
 
 
 
-const remKv = () => {
-    setKv(k => {
-        localStorage.setItem('KV', JSON.stringify(k.slice(1)));
-        return k.slice(1);
-    });
-}
+    const remKv = () => {
+        setKv(k => {
+            localStorage.setItem('KV', JSON.stringify(k.slice(1)));
+            return k.slice(1);
+        });
+    }
 
-const addKv = () => {
-    setKv(k => {
-        localStorage.setItem('KV', JSON.stringify([...k, niceText]));
-        return [...k, niceText];
-    });
-}
+    const addKv = () => {
+        setKv(k => {
+            localStorage.setItem('KV', JSON.stringify([...k, niceText]));
+            return [...k, niceText];
+        });
+    }
 
-useEffect(() => {
-    setKv(JSON.parse(localStorage.getItem('KV') ?? '[]'));
-}, []);
+    useEffect(() => {
+        setKv(JSON.parse(localStorage.getItem('KV') ?? '[]'));
+    }, []);
 
 
 
@@ -73,7 +75,7 @@ useEffect(() => {
                             <div className="card m-4">
                                 <div className="card-header">
                                     {
-                                       cat ? cat.map((c, i) => <h2 key={i}>{c}</h2>) : null
+                                        cat ? cat.map((c, i) => <h2 key={i}>{c}</h2>) : null
                                     }
                                 </div>
                                 <div className="card-body">
@@ -115,15 +117,38 @@ useEffect(() => {
                                     <button type="button" onClick={addKv} className="btn btn-outline-primary m-2">Add []</button>
                                     <button type="button" onClick={remKv} className="btn btn-outline-primary m-2">Remove []</button>
                                     <div className="form-group">
-                                    <label>Color input</label>
-                                    <input type="color" className="form-control" onChange={e => setNiceText(e.target.value)} value={niceText}></input>
-                                    <small className="form-text text-muted">Some nice color.</small>
-                                </div>
+                                        <label>Color input</label>
+                                        <input type="color" className="form-control" onChange={e => setNiceText(e.target.value)} value={niceText}></input>
+                                        <small className="form-text text-muted">Some nice color.</small>
+                                    </div>
                                 </div>
                                 <div className="square-garden">
                                     {
-                                        kv.map((n, i) => <div key={i} className="small-red-square" style={{backgroundColor: n}}></div>)
+                                        kv.map((n, i) => <div key={i} className="small-red-square" style={{ backgroundColor: n }}></div>)
                                     }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="cards-container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="card m-4">
+                                <div className="card-header">
+                                    Color Checkbox
+                                </div>
+                                <div className="card-body">
+                                    <div className="form-group form-check">
+                                        <input type="checkbox" className="form-check-input" onChange={() => setCb(b => !b)} checked={cb} />
+                                        <label className="form-check-label">Check to change</label>
+                                    </div>
+                                    <div className="square-garden">
+                                        <div className="small-red-square" style={{ backgroundColor: cb ? 'crimson' : 'black' }}></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
