@@ -7,6 +7,8 @@ function App() {
 
     const [cat, setCat] = useState(null);
 
+    const [niceText, setNiceText] = useState(null);
+
     const [count, setCount] = useState(null);
 
     const [kv, setKv] = useState([]);
@@ -40,10 +42,17 @@ function App() {
 
 
 
+const remKv = () => {
+    setKv(k => {
+        localStorage.setItem('KV', JSON.stringify(k.slice(1)));
+        return k.slice(1);
+    });
+}
+
 const addKv = () => {
     setKv(k => {
-        localStorage.setItem('KV', JSON.stringify([...k, 1]));
-        return [...k, 1];
+        localStorage.setItem('KV', JSON.stringify([...k, niceText]));
+        return [...k, niceText];
     });
 }
 
@@ -104,10 +113,16 @@ useEffect(() => {
                                 </div>
                                 <div className="card-body">
                                     <button type="button" onClick={addKv} className="btn btn-outline-primary m-2">Add []</button>
+                                    <button type="button" onClick={remKv} className="btn btn-outline-primary m-2">Remove []</button>
+                                    <div className="form-group">
+                                    <label>Color input</label>
+                                    <input type="text" className="form-control" onChange={e => setNiceText(e.target.value)} value={niceText}></input>
+                                    <small className="form-text text-muted">Some nice text.</small>
+                                </div>
                                 </div>
                                 <div className="square-garden">
                                     {
-                                        kv.map((_, i) => <div key={i} className="small-red-square"></div>)
+                                        kv.map((n, i) => <div key={i} className="small-red-square">{n}</div>)
                                     }
                                 </div>
                             </div>
