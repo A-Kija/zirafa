@@ -24,7 +24,7 @@ function App() {
         localStorage.removeItem('katinukas');
         setCat(null);
     }
-
+// 
     const addOne = () => {
         setCount(c => {
             localStorage.setItem('one', c + 1);
@@ -35,10 +35,25 @@ function App() {
     useEffect(() => {
         setCount(parseInt(localStorage.getItem('one') ?? 1));
     }, []);
+// 
 
-    const addKv = () => {
-        setKv(k => [...k, 1]);
-    }
+
+
+
+const addKv = () => {
+    setKv(k => {
+        localStorage.setItem('KV', JSON.stringify([...k, 1]));
+        return [...k, 1];
+    });
+}
+
+useEffect(() => {
+    setKv(JSON.parse(localStorage.getItem('KV') ?? '[]'));
+}, []);
+
+
+
+
 
     return (
         <>
