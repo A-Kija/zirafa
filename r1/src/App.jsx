@@ -10,12 +10,12 @@ function App() {
     const [count, setCount] = useState(null);
 
     useEffect(() => {
-        setCat(localStorage.getItem('katinukas'));
+        setCat(JSON.parse(localStorage.getItem('katinukas')));
     }, []);
 
     const addCat = () => {
-        localStorage.setItem('katinukas', 'Vardu Pilkis');
-        setCat('Vardu Pilkis');
+        localStorage.setItem('katinukas', JSON.stringify(['pilkis', 'mulkis']));
+        setCat(['pilkis', 'mulkis']);
     }
 
     const removeCat = () => {
@@ -43,7 +43,9 @@ function App() {
                         <div className="col-12">
                             <div className="card m-4">
                                 <div className="card-header">
-                                    {cat}
+                                    {
+                                       cat ? cat.map((c, i) => <h2 key={i}>{c}</h2>) : null
+                                    }
                                 </div>
                                 <div className="card-body">
                                     <button type="button" onClick={addCat} className="btn btn-outline-primary m-2">Add Cat</button>
