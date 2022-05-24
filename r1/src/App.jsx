@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
     const [cb, setCb] = useState(false);
+    const [cb1, setCb1] = useState(false);
 
     const [cat, setCat] = useState(null);
 
@@ -14,6 +15,11 @@ function App() {
     const [count, setCount] = useState(null);
 
     const [kv, setKv] = useState([]);
+
+    const reset = () => {
+        setCb(false);
+        setCb1(false);
+    }
 
     useEffect(() => {
         setCat(JSON.parse(localStorage.getItem('katinukas')));
@@ -146,8 +152,18 @@ function App() {
                                         <input type="checkbox" className="form-check-input" onChange={() => setCb(b => !b)} checked={cb} />
                                         <label className="form-check-label">Check to change</label>
                                     </div>
+                                    <div className="form-group form-check">
+                                        <input type="checkbox" className="form-check-input" onChange={() => setCb1(b => !b)} checked={cb1} />
+                                        <label className="form-check-label">Check to change</label>
+                                    </div>
+                                    <button type="button" onClick={reset} className="btn btn-outline-danger m-2">RESET</button>
                                     <div className="square-garden">
-                                        <div className="small-red-square" style={{ backgroundColor: cb ? 'crimson' : 'black' }}></div>
+                                        <div className="small-red-square" style={
+                                            {
+                                                backgroundColor: cb ? 'crimson' : 'black',
+                                                borderRadius: cb1 ? '50%' : null
+                                            }
+                                        }></div>
                                     </div>
                                 </div>
                             </div>
