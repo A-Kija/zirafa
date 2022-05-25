@@ -122,3 +122,8 @@ namas.sort((a, b) => {
 const mm = namas.map(e => e.length).filter(e => e > 4 ).sort((a, b) => b - a);
 
 console.table(mm);
+
+
+const red = namas.reduce((p, n) => p + ' *** ' + n, '---------');
+
+console.table(red);
