@@ -7,14 +7,14 @@ function rand(min, max) {
 
 const namas = ['Petras', 'Lina', 'Bebras'];
 
-console.table(namas[2]);
+// console.table(namas[2]);
 
 namas[0] = 'Barsukas';
 
 console.table(namas);
 
 for (let i = 0; i < namas.length; i++) {
-    console.table(namas[i]);
+    // console.table(namas[i]);
 }
 
 /*
@@ -35,7 +35,7 @@ while(pinigai <= 200) {
 //DEKLARACIJA KODO PARASYMAS
 const sayHello1 = () => {
     const a = 7 + 8;
-    console.log('gavau:', a);
+    // console.log('gavau:', a);
 }
 
 // ISKVIETIMAS PARASYTO KODO NAUDOJIMAS
@@ -46,7 +46,7 @@ sayHello1();
 
 const sayHello2 = (b, c) => {
     const a = b + c;
-    console.log('gavau:', a);
+    // console.log('gavau:', a);
 }
 
 sayHello2(5, 1);
@@ -58,7 +58,7 @@ const sayHello3 = (b, c) => {
 }
 
 let rez = sayHello3(10, 21);
-console.log(rez);
+// console.log(rez);
 
 const sayHello4 = b => {
     const a = b * 5;
@@ -66,17 +66,17 @@ const sayHello4 = b => {
 }
 
 rez = sayHello4(5);
-console.log(rez);
+// console.log(rez);
 
 
 const sayHello5 = b => b * 5;
 
 rez = sayHello5(5);
-console.log(rez);
+// console.log(rez);
 
 const sayHello6 = (b, c) => b * c;
 rez = sayHello6(5, 8);
-console.log(rez);
+// console.log(rez);
 
 
 const asNaudojuCallBacka = (callback, b, c) => {
@@ -85,4 +85,26 @@ const asNaudojuCallBacka = (callback, b, c) => {
 }
 
 rez = asNaudojuCallBacka(sayHello6, 6, 10);
-console.log(rez);
+// console.log(rez);
+
+// const manoFun = (el, index) => {
+//     console.log(index, el);
+// }
+
+// namas.forEach(manoFun);
+
+// namas.forEach((el, i) => {
+//     console.log(el, i)
+// });
+
+// namas.forEach(e => console.log(e.length));
+
+
+// const fm = namas.forEach((e, i) => console.log(e.length * (i + 1)));
+
+// salyga ? yes : no
+
+
+const mm = namas.map(e => e === 'Lina' ? '<span>' + e + '</span>' : '<div>' + e + '</div>');
+
+console.table(mm);
