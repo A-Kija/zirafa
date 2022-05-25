@@ -73,3 +73,16 @@ const sayHello5 = b => b * 5;
 
 rez = sayHello5(5);
 console.log(rez);
+
+const sayHello6 = (b, c) => b * c;
+rez = sayHello6(5, 8);
+console.log(rez);
+
+
+const asNaudojuCallBacka = (callback, b, c) => {
+    const a = callback(b, c);
+    return a;
+}
+
+rez = asNaudojuCallBacka(sayHello6, 6, 10);
+console.log(rez);
