@@ -105,6 +105,20 @@ rez = asNaudojuCallBacka(sayHello6, 6, 10);
 // salyga ? yes : no
 
 
-const mm = namas.map(e => e[0] == 'B' ? e.length : e);
+// const mm = namas.map(e => e[0] == 'B' ? e.length : e);
+
+// const mm = namas.filter(e => e[0] != 'B' ).map(e => e.length);
+
+namas.sort((a, b) => {
+    console.log(a, b);
+    if (a[2] > b[2]) return 1;
+    if (a[2] < b[2]) return -1;
+    return 0;
+
+    // return rand(0, 10) - rand(0, 10);
+
+})
+
+const mm = namas.map(e => e.length).filter(e => e > 4 ).sort((a, b) => b - a);
 
 console.table(mm);
