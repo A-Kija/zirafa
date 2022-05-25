@@ -5,7 +5,7 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const namas = ['Petras', 'Lina', 'Bebras'];
+const namas = ['Petras', 'Lina', 'Bebras', 'Bobikas', 'Leopardas', 'Sima', 'Rima'];
 
 // console.table(namas[2]);
 
@@ -105,6 +105,6 @@ rez = asNaudojuCallBacka(sayHello6, 6, 10);
 // salyga ? yes : no
 
 
-const mm = namas.map(e => e === 'Lina' ? '<span>' + e + '</span>' : '<div>' + e + '</div>');
+const mm = namas.map(e => e[0] == 'B' ? e.length : e);
 
 console.table(mm);
