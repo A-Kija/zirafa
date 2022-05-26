@@ -274,3 +274,19 @@ button.a {
     display: flex;
     flex-direction: column-reverse;
 }
+
+.lc {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+    }
+}
