@@ -39,11 +39,21 @@ function App() {
         setAfrica('Africa');
     }
 
+    const reset = () => {
+        setRed('white');
+        setAfrica('');
+    }
+
+    const makeGreen = () => {
+        setColor('green');
+    }
+
+
     return (
         <div className="App">
             <header className="App-header">
                 <h1>REPEAT</h1>
-                <Hello red={red} africa={africa}></Hello>
+                <Hello red={red} africa={africa} makeGreen={makeGreen}></Hello>
                 <h2 style={{color:color}}>{ate}</h2>
                 <div className="sqc">
                     <button className="a" onClick={labas}>Labas</button>
@@ -55,6 +65,7 @@ function App() {
                     <button className="a" onClick={makeRed}>RED</button>
                     <button className="a" onClick={makeH3Red}>H3 RED</button>
                     <button className="a" onClick={sayAfrica}>H3 Africa</button>
+                    <button className="a" onClick={reset}>H3 Reset</button>
                 </div>
             </header>
         </div>
