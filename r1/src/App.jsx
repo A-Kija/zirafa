@@ -15,16 +15,24 @@ function App() {
         {id: 99, type: 'Tesla', color: 'gray', price: 78944.00}
     ];
 
-    const [showCar, setShowCar] = useState(null);
+    // const [showCar, setShowCar] = useState(null);
 
-    const [activeCar, setActiveCar] = useState(10);
+    // const [activeCar, setActiveCar] = useState(10);
+
+    const [kv, setKv] = useState([]);
 
     return (
         <div className="App">
             <header className="App-header">
                 <h1>REPEAT PART II</h1>
-                <h2>{showCar ? showCar.type : null}</h2>
-                <List2 cars={cars} setShowCar={setShowCar} activeCar={activeCar} setActiveCar={setActiveCar}></List2>
+                <div className="kvc">
+                {
+                    kv.map((k, i) => <div style={{background:k}} key={i} className="kv"></div>)
+                }
+                </div>
+                <button className="a" onClick={() => setKv(k => [...k, 'skyblue', 'gray'])}>ADD []</button>
+                {/* <h2>{showCar ? showCar.type : null}</h2> */}
+                {/* <List2 cars={cars} setShowCar={setShowCar} activeCar={activeCar} setActiveCar={setActiveCar}></List2> */}
             </header>
         </div>
     );
