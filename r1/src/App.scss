@@ -73,8 +73,6 @@
     border: 1px solid gray;
 }
 
-
-
 .rcolor {
     width: 100vw;
     height: 33px;
@@ -288,5 +286,19 @@ button.a {
         align-items: center;
         flex-direction: column;
         margin: 10px;
+        div {
+            margin: 3px;
+            transition: all 0.6s;
+            cursor: pointer;
+            padding: 5px 10px;
+            &:hover {
+                background-color: gray;
+            }
+            span {
+                padding: 0 15px;
+                font-weight: bold;
+                letter-spacing: 0.7px;
+            }
+        }
     }
 }
