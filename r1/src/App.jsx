@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.scss';
 import List2 from './Components/015/List2';
 function App() {
@@ -14,11 +15,16 @@ function App() {
         {id: 99, type: 'Tesla', color: 'gray', price: 78944.00}
     ];
 
+    const [showCar, setShowCar] = useState(null);
+
+    const [activeCar, setActiveCar] = useState(10);
+
     return (
         <div className="App">
             <header className="App-header">
                 <h1>REPEAT PART II</h1>
-                <List2 cars={cars}></List2>
+                <h2>{showCar ? showCar.type : null}</h2>
+                <List2 cars={cars} setShowCar={setShowCar} activeCar={activeCar} setActiveCar={setActiveCar}></List2>
             </header>
         </div>
     );
