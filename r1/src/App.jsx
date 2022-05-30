@@ -8,10 +8,15 @@ import Create from './Components/016/Create';
 function App() {
 
     const [list, setList] = useState([]);
+    const [modal, setModal] = useState(null);
 
     const add = obj => {
         obj.id = rand(10000, 99999);
         setList(oldList => [...oldList, obj]);
+    }
+
+    const edit = obj => {
+        setList(oldList => oldList.map(o => o.id === obj.id ? obj : o));
     }
 
     const sortName = () => {
@@ -53,7 +58,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        list.map((obj, i) => <List key={obj.id} obj={obj} index={i + 1} deleteItem={deleteItem}></List>)
+                                        list.map((obj, i) => <List key={obj.id} obj={obj} index={i + 1} deleteItem={deleteItem} setModal={setModal}></List>)
                                     }
                                 </ul>
                                 <button type="button" className="btn btn-outline-warning mt-4 mr-2" onClick={sortName}>Sort name</button>
@@ -65,7 +70,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            <Edit></Edit>
+            <Edit modal={modal} setModal={setModal} edit={edit}></Edit>
         </>
     );
 
