@@ -3,17 +3,15 @@ import './App.scss';
 import { useState } from 'react';
 import List from './Components/016/List';
 import rand from './Functions/rand';
+import Edit from './Components/016/Edit';
+import Create from './Components/016/Create';
 function App() {
 
-    const [name, setName] = useState('');
-    const [color, setColor] = useState('');
     const [list, setList] = useState([]);
 
-    const add = () => {
-        const obj = {name, color, id: rand(10000, 99999)}; // {name: name, color: color}
+    const add = obj => {
+        obj.id = rand(10000, 99999);
         setList(oldList => [...oldList, obj]);
-        setName('');
-        setColor('');
     }
 
     const sortName = () => {
@@ -45,22 +43,7 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-                        <div className="card m-4">
-                            <div className="card-header">
-                                Add to list
-                            </div>
-                            <div className="card-body">
-                                <div className="form-group">
-                                    <label>Name</label>
-                                    <input type="text" className="form-control" onChange={e => setName(e.target.value)} value={name} />
-                                </div>
-                                <div className="form-group">
-                                    <label>Color</label>
-                                    <input type="text" className="form-control" onChange={e => setColor(e.target.value)} value={color} />
-                                </div>
-                                <button type="button" className="btn btn-outline-primary" onClick={add}>ADD</button>
-                            </div>
-                        </div>
+                        <Create add={add}></Create>
                     </div>
                     <div className="col-8">
                         <div className="card m-4">
@@ -82,6 +65,7 @@ function App() {
                     </div>
                 </div>
             </div>
+            <Edit></Edit>
         </>
     );
 
