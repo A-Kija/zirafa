@@ -15,6 +15,26 @@ function App() {
         setColor('');
     }
 
+    const sortName = () => {
+        setList(oldList => {
+            return [...oldList].sort((a, b) => {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                return 0;
+            });
+        });
+    }
+
+    const sortColor = () => {
+        setList(oldList => {
+            return [...oldList].sort((a, b) => {
+                if (a.color.toLowerCase() > b.color.toLowerCase()) return 1;
+                if (a.color.toLowerCase() < b.color.toLowerCase()) return -1;
+                return 0;
+            });
+        });
+    }
+
     return (
         <>
             <div className="container">
@@ -45,10 +65,13 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        list.map((obj, i) => <List key={i} obj={obj}></List>)
+                                        list.map((obj, i) => <List key={i} obj={obj} index={i + 1}></List>)
                                     }
                                 </ul>
+                                <button type="button" className="btn btn-outline-warning mt-4 mr-2" onClick={sortName}>Sort name</button>
+                                <button type="button" className="btn btn-outline-info mt-4 mr-2" onClick={sortColor}>Sort Color</button>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
