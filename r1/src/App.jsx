@@ -36,6 +36,10 @@ function App() {
         });
     }
 
+    const deleteItem = id => {
+        setList(oldList => oldList.filter(obj => obj.id !== id));
+    }
+
     return (
         <>
             <div className="container">
@@ -66,7 +70,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        list.map((obj, i) => <List key={obj.id} obj={obj} index={i + 1}></List>)
+                                        list.map((obj, i) => <List key={obj.id} obj={obj} index={i + 1} deleteItem={deleteItem}></List>)
                                     }
                                 </ul>
                                 <button type="button" className="btn btn-outline-warning mt-4 mr-2" onClick={sortName}>Sort name</button>

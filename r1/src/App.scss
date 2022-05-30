@@ -302,3 +302,17 @@ button.a {
         }
     }
 }
+
+.list-group-item {
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+}
