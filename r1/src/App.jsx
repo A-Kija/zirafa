@@ -1,6 +1,18 @@
 import './bootstrap.css';
 import './App.scss';
+import { useState } from 'react';
 function App() {
+
+    const [name, setName] = useState('');
+    const [color, setColor] = useState('');
+    const [list, setList] = useState([]);
+
+    const add = () => {
+        const obj = {name, color}; // {name: name, color: color}
+        setList(oldList => [...oldList, obj]);
+        setName('');
+        setColor('');
+    }
 
     return (
         <>
@@ -14,13 +26,13 @@ function App() {
                             <div className="card-body">
                                 <div className="form-group">
                                     <label>Name</label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" onChange={e => setName(e.target.value)} value={name} />
                                 </div>
                                 <div className="form-group">
                                     <label>Color</label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" onChange={e => setColor(e.target.value)} value={color} />
                                 </div>
-                                <button type="button" className="btn btn-outline-primary">ADD</button>
+                                <button type="button" className="btn btn-outline-primary" onClick={add}>ADD</button>
                             </div>
                         </div>
                     </div>
@@ -31,7 +43,9 @@ function App() {
                             </div>
                             <div className="card-body">
                                 <ul className="list-group">
-                                    <li className="list-group-item">An item</li>
+                                    {
+                                        list.map((obj, i) => <li key={i} className="list-group-item">{obj.name} {obj.color}</li>)
+                                    }
                                 </ul>
                             </div>
                         </div>
