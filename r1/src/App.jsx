@@ -1,6 +1,7 @@
 import './bootstrap.css';
 import './App.scss';
 import { useState } from 'react';
+import List from './Components/016/List';
 function App() {
 
     const [name, setName] = useState('');
@@ -44,7 +45,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        list.map((obj, i) => <li key={i} className="list-group-item">{obj.name} {obj.color}</li>)
+                                        list.map((obj, i) => <List key={i} obj={obj}></List>)
                                     }
                                 </ul>
                             </div>
