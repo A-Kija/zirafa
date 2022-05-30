@@ -2,6 +2,7 @@ import './bootstrap.css';
 import './App.scss';
 import { useState } from 'react';
 import List from './Components/016/List';
+import rand from './Functions/rand';
 function App() {
 
     const [name, setName] = useState('');
@@ -9,7 +10,7 @@ function App() {
     const [list, setList] = useState([]);
 
     const add = () => {
-        const obj = {name, color}; // {name: name, color: color}
+        const obj = {name, color, id: rand(10000, 99999)}; // {name: name, color: color}
         setList(oldList => [...oldList, obj]);
         setName('');
         setColor('');
@@ -65,11 +66,12 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        list.map((obj, i) => <List key={i} obj={obj} index={i + 1}></List>)
+                                        list.map((obj, i) => <List key={obj.id} obj={obj} index={i + 1}></List>)
                                     }
                                 </ul>
                                 <button type="button" className="btn btn-outline-warning mt-4 mr-2" onClick={sortName}>Sort name</button>
                                 <button type="button" className="btn btn-outline-info mt-4 mr-2" onClick={sortColor}>Sort Color</button>
+                                <button type="button" className="btn btn-outline-danger mt-4 mr-2" onClick={() => setList([])}>Clear</button>
                             </div>
                             
                         </div>
