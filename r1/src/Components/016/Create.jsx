@@ -4,13 +4,15 @@ function Create({ add }) {
     const [name, setName] = useState('');
     const [color, setColor] = useState('');
     const [size, setSize] = useState('M');
+    const [red, setRed] = useState(false);
 
     const clickAdd = () => {
-        const obj = { name, color, size }; // {name: name, color: color}
+        const obj = { name, color, size, red }; // {name: name, color: color}
         add(obj);
         setName('');
         setColor('');
         setSize('M');
+        setRed(false);
     }
 
     return (
@@ -35,7 +37,13 @@ function Create({ add }) {
                         <option value="L">L</option>
                     </select>
                 </div>
-                <button type="button" className="btn btn-outline-primary" onClick={clickAdd}>ADD</button>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" onChange={() => setRed(r => !r)} checked={red} />
+                        <label className="form-check-label">
+                            Red or Not
+                        </label>
+                </div>
+                <button type="button" className="btn btn-outline-primary mt-4" onClick={clickAdd}>ADD</button>
             </div>
         </div>
     );
