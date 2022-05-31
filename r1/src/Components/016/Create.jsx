@@ -5,14 +5,16 @@ function Create({ add }) {
     const [color, setColor] = useState('');
     const [size, setSize] = useState('M');
     const [red, setRed] = useState(false);
+    const [width, setWidth] = useState('150');
 
     const clickAdd = () => {
-        const obj = { name, color, size, red }; // {name: name, color: color}
+        const obj = { name, color, size, red, width }; // {name: name, color: color}
         add(obj);
         setName('');
         setColor('');
         setSize('M');
         setRed(false);
+        setWidth('150');
     }
 
     return (
@@ -29,7 +31,7 @@ function Create({ add }) {
                     <label>Color</label>
                     <input type="text" className="form-control" onChange={e => setColor(e.target.value)} value={color} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Size select</label>
                     <select className="form-control" value={size} onChange={e => setSize(e.target.value)}>
                         <option value="S">S</option>
@@ -42,6 +44,10 @@ function Create({ add }) {
                         <label className="form-check-label">
                             Red or Not
                         </label>
+                </div>
+                <div className="form-group">
+                    <label>Width: {width} m</label>
+                    <input type="range" min="1" max="300" className="form-control" onChange={e => setWidth(e.target.value)} value={width} />
                 </div>
                 <button type="button" className="btn btn-outline-primary mt-4" onClick={clickAdd}>ADD</button>
             </div>
