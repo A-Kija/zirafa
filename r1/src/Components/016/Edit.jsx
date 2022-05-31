@@ -7,6 +7,7 @@ function Edit({modal, setModal, edit}) {
     const clickEdit = () => {
         const obj = {name, color, id: modal.id}
         edit(obj);
+        setModal(null);
     }
 
     useEffect(() => {
@@ -43,7 +44,7 @@ function Edit({modal, setModal, edit}) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" onClick={() => setModal(null)}>Close</button>
-                        <button type="button" className="btn btn-outline-primary">Save changes</button>
+                        <button type="button" className="btn btn-outline-primary" onClick={clickEdit}>Save changes</button>
                     </div>
                 </div>
             </div>

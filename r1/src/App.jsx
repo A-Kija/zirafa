@@ -7,8 +7,9 @@ import Edit from './Components/016/Edit';
 import Create from './Components/016/Create';
 function App() {
 
-    const [list, setList] = useState([]);
-    const [modal, setModal] = useState(null);
+    const [list, setList] = useState([]); // listo rodymas
+
+    const [modal, setModal] = useState(null); // modalo rodymas
 
     const add = obj => {
         obj.id = rand(10000, 99999);
