@@ -6,15 +6,17 @@ function Create({ add }) {
     const [size, setSize] = useState('M');
     const [red, setRed] = useState(false);
     const [width, setWidth] = useState('150');
+    const [count, setCount] = useState('');
 
     const clickAdd = () => {
-        const obj = { name, color, size, red, width }; // {name: name, color: color}
+        const obj = { name, color, size, red, width, count }; // {name: name, color: color}
         add(obj);
         setName('');
         setColor('');
         setSize('M');
         setRed(false);
         setWidth('150');
+        setCount('')
     }
 
     return (
@@ -48,6 +50,10 @@ function Create({ add }) {
                 <div className="form-group">
                     <label>Width: {width} m</label>
                     <input type="range" min="1" max="300" className="form-control" onChange={e => setWidth(e.target.value)} value={width} />
+                </div>
+                <div className="form-group">
+                    <label>Count</label>
+                    <input type="text" className="form-control" onChange={e => setCount(e.target.value)} value={count} />
                 </div>
                 <button type="button" className="btn btn-outline-primary mt-4" onClick={clickAdd}>ADD</button>
             </div>

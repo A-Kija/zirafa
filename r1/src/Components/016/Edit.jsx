@@ -52,7 +52,7 @@ function Edit({ modal, setModal, edit }) {
                                 <option value="L">L</option>
                             </select>
                         </div>
-                    </div>
+                    
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" onChange={() => setRed(r => !r)} checked={red} />
                         <label className="form-check-label">
@@ -62,6 +62,7 @@ function Edit({ modal, setModal, edit }) {
                     <div className="form-group">
                         <label>Width: {width} m</label>
                         <input type="range" min="1" max="300" className="form-control" onChange={e => setWidth(e.target.value)} value={width} />
+                    </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" onClick={() => setModal(null)}>Close</button>
