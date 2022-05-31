@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-function Edit({modal, setModal, edit}) {
+function Edit({ modal, setModal, edit }) {
 
     const [name, setName] = useState('');
     const [color, setColor] = useState('');
+    const [size, setSize] = useState('M');
+    const [red, setRed] = useState(false);
+    const [width, setWidth] = useState('150');
 
     const clickEdit = () => {
-        const obj = {name, color, id: modal.id}
+        const obj = { name, color, id: modal.id, size, red, width }
         edit(obj);
         setModal(null);
     }
@@ -18,7 +21,7 @@ function Edit({modal, setModal, edit}) {
         setColor(modal.color);
     }, [modal]);
 
-    if(!modal) {
+    if (!modal) {
         return null;
     }
 
@@ -41,6 +44,24 @@ function Edit({modal, setModal, edit}) {
                             <label>Color</label>
                             <input type="text" className="form-control" onChange={e => setColor(e.target.value)} value={color} />
                         </div>
+                        <div className="form-group">
+                            <label>Size select</label>
+                            <select className="form-control" value={size} onChange={e => setSize(e.target.value)}>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" onChange={() => setRed(r => !r)} checked={red} />
+                        <label className="form-check-label">
+                            Red or Not
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>Width: {width} m</label>
+                        <input type="range" min="1" max="300" className="form-control" onChange={e => setWidth(e.target.value)} value={width} />
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" onClick={() => setModal(null)}>Close</button>
