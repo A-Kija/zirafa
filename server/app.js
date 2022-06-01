@@ -33,6 +33,19 @@ app.get("/trees", (req, res) => {
   });
 });
 
+app.get("/animals", (req, res) => {
+  const sql = `
+  SELECT
+  *
+  FROM animals
+`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+
 
 
 
