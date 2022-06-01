@@ -1,8 +1,24 @@
 import './bootstrap.css';
 import './App.scss';
+import axios from 'axios';
+
+import { useEffect, useState } from 'react';
+import Tree from './Components/018/Tree';
 
 function App() {
-  
+
+
+    const [treeList, setTreeList] = useState(null);
+
+
+    // READ
+    useEffect(() => {
+        axios.get('http://localhost:3003/trees')
+        .then(res => {
+            setTreeList(res.data);
+        })
+    }, []);
+
 
     return (
         <>
@@ -19,7 +35,9 @@ function App() {
                             </div>
                             <div className="card-body">
                                 <ul className="list-group">
-                                    -----
+                                    {
+                                        treeList ? treeList.map(t => <Tree key={t.id} tree={t}></Tree>) : null
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -37,7 +55,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            
+
         </>
     );
 
