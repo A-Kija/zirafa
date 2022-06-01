@@ -44,7 +44,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        treeList ? treeList.map(t => <Tree key={t.id} tree={t}></Tree>) : null
+                                        treeList ? treeList.map((t, i) => <Tree key={t.id} index={i + 1} tree={t}></Tree>) : null
                                     }
                                 </ul>
                             </div>
