@@ -321,3 +321,17 @@ button.a {
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.yes-no {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0, 5px;
+    display: inline-block;
+    &.yes {
+        background-color: greenyellow;
+    }
+    &.no {
+        background-color: crimson;
+    }
+}

@@ -57,7 +57,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                 {
-                                        animalList ? animalList.map(a => <Animal key={a.id} animal={a}></Animal>) : null
+                                        animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a}></Animal>) : null
                                     }
                                 </ul>
                             </div>

@@ -1,8 +1,16 @@
-function Animal({animal}) {
+function Animal({ animal, index }) {
 
     return (
         <li className="list-group-item">
-            {animal.name}
+            <div className="item">
+                <div className="content">
+                    <b>#{index}</b> <span>{animal.name}</span> <i>{animal.age} m</i> <span className={(animal.has_owner ? 'yes' : 'no') + ' yes-no'}></span> <small>{['Cat', 'Dog', 'Rat', 'racoon'][animal.type - 1]}</small>
+                </div>
+                <div className="buttons">
+                    <button type="button" className="btn btn-outline-success mr-2" >Edit</button>
+                    <button type="button" className="btn btn-outline-danger mr-2" >Delete</button>
+                </div>
+            </div>
         </li>
     );
 }
