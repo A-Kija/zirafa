@@ -14,6 +14,8 @@ function App() {
     const [treeList, setTreeList] = useState(null);
     const [animalList, setAnimalList] = useState(null);
 
+    const [createTreeData, setCreateTreeData] = useState(null);
+    const [createAnimalData, setCreateAnimalData] = useState(null);
 
     // READ
     useEffect(() => {
@@ -35,8 +37,8 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-                        <CreateTree></CreateTree>
-                        <CreateAnimal></CreateAnimal>
+                        <CreateTree setCreateTreeData={setCreateTreeData}></CreateTree>
+                        <CreateAnimal setCreateAnimalData={setCreateAnimalData}></CreateAnimal>
                     </div>
                     <div className="col-8">
                         <div className="card m-4">

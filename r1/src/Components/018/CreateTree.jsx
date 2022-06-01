@@ -1,13 +1,12 @@
 import { useState } from 'react';
-function CreateTree() {
+function CreateTree({setCreateTreeData}) {
 
     const [title, setTitle] = useState('');
     const [height, setHeight] = useState('');
     const [type, setType] = useState('1');
 
     const clickAdd = () => {
-        const obj = { title, height, type }; // {name: name, color: color}
-        // add(obj);
+        setCreateTreeData({ title, height, type });
         setTitle('');
         setHeight('');
         setType('1');

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-function CreateAnimal() {
+function CreateAnimal({setCreateAnimalData}) {
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -7,8 +7,7 @@ function CreateAnimal() {
     const [hasOwner, setHasOwner] = useState(false);
 
     const clickAdd = () => {
-        const obj = { name, age, type, has_owner: parseInt(hasOwner) }; // {name: name, color: color}
-        // add(obj);
+        setCreateAnimalData({ name, age, type, has_owner: parseInt(hasOwner) });
         setName('');
         setAge('');
         setType('1');
