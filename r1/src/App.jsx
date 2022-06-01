@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Tree from './Components/018/Tree';
 import Animal from './Components/018/Animal';
+import CreateTree from './Components/018/CreateTree';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-                        CREATE Tree
+                        <CreateTree></CreateTree>
                         CREATE Animal
                     </div>
                     <div className="col-8">
