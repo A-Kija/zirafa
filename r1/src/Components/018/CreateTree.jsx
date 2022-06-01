@@ -6,7 +6,7 @@ function CreateTree() {
     const [type, setType] = useState('1');
 
     const clickAdd = () => {
-        // const obj = { title, height, type }; // {name: name, color: color}
+        const obj = { title, height, type }; // {name: name, color: color}
         // add(obj);
         setTitle('');
         setHeight('');
@@ -28,7 +28,7 @@ function CreateTree() {
                     <input type="text" className="form-control" onChange={e => setHeight(e.target.value)} value={height} />
                 </div>
                 <div className="form-group">
-                    <label>Size select</label>
+                    <label>Type select</label>
                     <select className="form-control" value={type} onChange={e => setType(e.target.value)}>
                         <option value="1">Leaf</option>
                         <option value="2">Spike</option>

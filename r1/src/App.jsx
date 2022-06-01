@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Tree from './Components/018/Tree';
 import Animal from './Components/018/Animal';
 import CreateTree from './Components/018/CreateTree';
+import CreateAnimal from './Components/018/CreateAnimal';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
                 <div className="row">
                     <div className="col-4">
                         <CreateTree></CreateTree>
-                        CREATE Animal
+                        <CreateAnimal></CreateAnimal>
                     </div>
                     <div className="col-8">
                         <div className="card m-4">
