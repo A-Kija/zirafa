@@ -20,6 +20,7 @@ function App() {
     const [createAnimalData, setCreateAnimalData] = useState(null);
 
     const [deleteTreeData, setDeleteTreeData] = useState(null);
+    const [deleteAnimalData, setAnimalTreeData] = useState(null);
 
 
     // READ
@@ -67,6 +68,15 @@ function App() {
             setLastTreeUpdate(Date.now());
         })
     }, [deleteTreeData]);
+    useEffect(() => {
+        if (null === deleteAnimalData) {
+            return;
+        }
+        axios.delete('http://localhost:3003/animals/' + deleteAnimalData.id)
+        .then(res => {
+            setLastAnimalUpdate(Date.now());
+        })
+    }, [deleteAnimalData]);
 
 
     return (
@@ -98,7 +108,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                 {
-                                        animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a}></Animal>) : null
+                                        animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a} setAnimalTreeData={setAnimalTreeData}></Animal>) : null
                                     }
                                 </ul>
                             </div>

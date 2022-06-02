@@ -87,6 +87,16 @@ app.delete("/trees/:id", (req, res) => {
         res.send(result);
     });
 });
+app.delete("/animals/:id", (req, res) => {
+    const sql = `
+      DELETE FROM animals
+      WHERE id = ?
+      `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
 
 
 

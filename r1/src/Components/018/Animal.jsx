@@ -1,4 +1,4 @@
-function Animal({ animal, index }) {
+function Animal({ animal, index, setAnimalTreeData }) {
 
     return (
         <li className="list-group-item">
@@ -8,7 +8,7 @@ function Animal({ animal, index }) {
                 </div>
                 <div className="buttons">
                     <button type="button" className="btn btn-outline-success mr-2" >Edit</button>
-                    <button type="button" className="btn btn-outline-danger mr-2" >Delete</button>
+                    <button type="button" className="btn btn-outline-danger mr-2" onClick={() => setAnimalTreeData(animal)} >Delete</button>
                 </div>
             </div>
         </li>
