@@ -29,20 +29,21 @@ function App() {
     const [deleteAnimalData, setAnimalTreeData] = useState(null);
 
     const [editTreeData, setEditTreeData] = useState(null);
+    const [editAnimalData, setEditAnimalData] = useState(null);
 
 
     // READ
     useEffect(() => {
         axios.get('http://localhost:3003/trees')
-        .then(res => {
-            setTreeList(res.data);
-        })
+            .then(res => {
+                setTreeList(res.data);
+            })
     }, [lastTreeUpdate]);
     useEffect(() => {
         axios.get('http://localhost:3003/animals')
-        .then(res => {
-            setAnimalList(res.data);
-        })
+            .then(res => {
+                setAnimalList(res.data);
+            })
     }, [lastAnimalUpdate]);
 
     // CREATE
@@ -51,9 +52,9 @@ function App() {
             return;
         }
         axios.post('http://localhost:3003/trees', createTreeData)
-        .then(res => {
-            setLastTreeUpdate(Date.now());
-        })
+            .then(_ => {
+                setLastTreeUpdate(Date.now());
+            })
     }, [createTreeData]);
 
     useEffect(() => {
@@ -61,9 +62,9 @@ function App() {
             return;
         }
         axios.post('http://localhost:3003/animals', createAnimalData)
-        .then(res => {
-            setLastAnimalUpdate(Date.now());
-        })
+            .then(_ => {
+                setLastAnimalUpdate(Date.now());
+            })
     }, [createAnimalData]);
 
     // DELETE
@@ -72,30 +73,39 @@ function App() {
             return;
         }
         axios.delete('http://localhost:3003/trees/' + deleteTreeData.id)
-        .then(res => {
-            setLastTreeUpdate(Date.now());
-        })
+            .then(_ => {
+                setLastTreeUpdate(Date.now());
+            })
     }, [deleteTreeData]);
     useEffect(() => {
         if (null === deleteAnimalData) {
             return;
         }
         axios.delete('http://localhost:3003/animals/' + deleteAnimalData.id)
-        .then(res => {
-            setLastAnimalUpdate(Date.now());
-        })
+            .then(_ => {
+                setLastAnimalUpdate(Date.now());
+            })
     }, [deleteAnimalData]);
 
     // EDIT
-        useEffect(() => {
-            if (null === editTreeData) {
-                return;
-            }
-            axios.put('http://localhost:3003/trees/' + editTreeData.id, editTreeData)
-            .then(res => {
+    useEffect(() => {
+        if (null === editTreeData) {
+            return;
+        }
+        axios.put('http://localhost:3003/trees/' + editTreeData.id, editTreeData)
+            .then(_ => {
                 setLastTreeUpdate(Date.now());
             })
-        }, [editTreeData]);
+    }, [editTreeData]);
+    useEffect(() => {
+        if (null === editAnimalData) {
+            return;
+        }
+        axios.put('http://localhost:3003/animals/' + editAnimalData.id, editAnimalData)
+            .then(_ => {
+                setLastAnimalUpdate(Date.now());
+            })
+    }, [editAnimalData]);
 
 
     return (
@@ -119,14 +129,13 @@ function App() {
                                 </ul>
                             </div>
                         </div>
-
                         <div className="card m-4">
                             <div className="card-header">
                                 <h2>Animals List</h2>
                             </div>
                             <div className="card-body">
                                 <ul className="list-group">
-                                {
+                                    {
                                         animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a} setAnimalTreeData={setAnimalTreeData} setEditAnimalModalData={setEditAnimalModalData}></Animal>) : null
                                     }
                                 </ul>
@@ -136,7 +145,7 @@ function App() {
                 </div>
             </div>
             <TreeEdit setEditTreeData={setEditTreeData} editTreeModalData={editTreeModalData} setEditTreeModalData={setEditTreeModalData}></TreeEdit>
-            <AnimalEdit setEditAnimalModalData={setEditAnimalModalData} editAnimalModalData={editAnimalModalData}></AnimalEdit>
+            <AnimalEdit setEditAnimalData={setEditAnimalData} setEditAnimalModalData={setEditAnimalModalData} editAnimalModalData={editAnimalModalData}></AnimalEdit>
         </>
     );
 

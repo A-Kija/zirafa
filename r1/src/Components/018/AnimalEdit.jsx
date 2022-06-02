@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-function AnimalEdit({ editAnimalModalData, setEditAnimalModalData }) {
+function AnimalEdit({ editAnimalModalData, setEditAnimalModalData, setEditAnimalData }) {
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
@@ -17,12 +17,10 @@ function AnimalEdit({ editAnimalModalData, setEditAnimalModalData }) {
     }, [editAnimalModalData])
 
 
-    // const clickAdd = () => {
-    //     setCreateTreeData({ title, height, type });
-    //     setTitle('');
-    //     setHeight('');
-    //     setType('1');
-    // }
+    const clickSave = () => {
+        setEditAnimalData({ name, age, type, has_owner: hasOwner ? '1' : '0', id: editAnimalModalData.id });
+        setEditAnimalModalData(null);
+    }
 
     if (!editAnimalModalData) {
         return null;
@@ -64,7 +62,7 @@ function AnimalEdit({ editAnimalModalData, setEditAnimalModalData }) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-outline-secondary" onClick={() => setEditAnimalModalData(null)}>Close</button>
-                            <button type="button" className="btn btn-outline-primary">Save changes</button>
+                            <button type="button" className="btn btn-outline-primary" onClick={clickSave}>Save changes</button>
                         </div>
                     </div>
                 </div>

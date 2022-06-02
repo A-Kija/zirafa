@@ -110,6 +110,17 @@ app.put("/trees/:id", (req, res) => {
         res.send(results);
     });
 });
+app.put("/animals/:id", (req, res) => {
+    const sql = `
+      UPDATE animals
+      SET name = ?, type = ?, has_owner = ?, age = ?
+      WHERE id = ?
+  `;
+    con.query(sql, [req.body.name, req.body.type, req.body.has_owner, !req.body.age ? 0 : req.body.age, req.params.id], (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
 
 
 
