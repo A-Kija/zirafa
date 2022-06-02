@@ -6,6 +6,17 @@ function AnimalEdit({ editAnimalModalData, setEditAnimalModalData }) {
     const [type, setType] = useState('1');
     const [hasOwner, setHasOwner] = useState(false);
 
+    useEffect(() => {
+        if (null === editAnimalModalData) {
+            return;
+        }
+        setName(editAnimalModalData.name);
+        setAge(editAnimalModalData.age);
+        setType(editAnimalModalData.type);
+        setHasOwner(editAnimalModalData.has_owner);
+    }, [editAnimalModalData])
+
+
     // const clickAdd = () => {
     //     setCreateTreeData({ title, height, type });
     //     setTitle('');
