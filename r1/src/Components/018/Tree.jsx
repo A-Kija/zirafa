@@ -1,4 +1,4 @@
-function Tree({ tree, index, setDeleteTreeData }) {
+function Tree({ tree, index, setDeleteTreeData, setEditTreeModalData }) {
 
     return (
         <li className="list-group-item">
@@ -7,7 +7,7 @@ function Tree({ tree, index, setDeleteTreeData }) {
                     <b>#{index}</b> <span>{tree.title}</span> <i>{tree.height} m</i> <small>{['Leaf', 'Spike', 'Palm'][tree.type - 1]}</small>
                 </div>
                 <div className="buttons">
-                    <button type="button" className="btn btn-outline-success mr-2" >Edit</button>
+                    <button type="button" className="btn btn-outline-success mr-2" onClick={() => setEditTreeModalData(tree)} >Edit</button>
                     <button type="button" className="btn btn-outline-danger mr-2" onClick={() => setDeleteTreeData(tree)}>Delete</button>
                 </div>
             </div>
