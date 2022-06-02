@@ -7,7 +7,7 @@ function CreateAnimal({setCreateAnimalData}) {
     const [hasOwner, setHasOwner] = useState(false);
 
     const clickAdd = () => {
-        setCreateAnimalData({ name, age, type, has_owner: parseInt(hasOwner) });
+        setCreateAnimalData({ name, age, type, has_owner: hasOwner ? '1' : '0' });
         setName('');
         setAge('');
         setType('1');
