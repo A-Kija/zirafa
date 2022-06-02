@@ -19,6 +19,8 @@ function App() {
     const [createTreeData, setCreateTreeData] = useState(null);
     const [createAnimalData, setCreateAnimalData] = useState(null);
 
+    const [deleteTreeData, setDeleteTreeData] = useState(null);
+
 
     // READ
     useEffect(() => {
@@ -55,6 +57,17 @@ function App() {
         })
     }, [createAnimalData]);
 
+    // DELETE
+    useEffect(() => {
+        if (null === deleteTreeData) {
+            return;
+        }
+        axios.delete('http://localhost:3003/trees/' + deleteTreeData.id)
+        .then(res => {
+            setLastTreeUpdate(Date.now());
+        })
+    }, [deleteTreeData]);
+
 
     return (
         <>
@@ -72,7 +85,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                     {
-                                        treeList ? treeList.map((t, i) => <Tree key={t.id} index={i + 1} tree={t}></Tree>) : null
+                                        treeList ? treeList.map((t, i) => <Tree key={t.id} index={i + 1} tree={t} setDeleteTreeData={setDeleteTreeData}></Tree>) : null
                                     }
                                 </ul>
                             </div>

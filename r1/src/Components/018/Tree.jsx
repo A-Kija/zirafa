@@ -1,4 +1,4 @@
-function Tree({ tree, index }) {
+function Tree({ tree, index, setDeleteTreeData }) {
 
     return (
         <li className="list-group-item">
@@ -8,7 +8,7 @@ function Tree({ tree, index }) {
                 </div>
                 <div className="buttons">
                     <button type="button" className="btn btn-outline-success mr-2" >Edit</button>
-                    <button type="button" className="btn btn-outline-danger mr-2" >Delete</button>
+                    <button type="button" className="btn btn-outline-danger mr-2" onClick={() => setDeleteTreeData(tree)}>Delete</button>
                 </div>
             </div>
         </li>

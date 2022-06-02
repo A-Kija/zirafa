@@ -61,7 +61,6 @@ app.post("/trees", (req, res) => {
         }
     );
 });
-
 app.post("/animals", (req, res) => {
     const sql = `
       INSERT INTO animals
@@ -75,6 +74,18 @@ app.post("/animals", (req, res) => {
             res.send(results);
         }
     );
+});
+
+// DELETE
+app.delete("/trees/:id", (req, res) => {
+    const sql = `
+        DELETE FROM trees
+        WHERE id = ?
+        `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
 });
 
 
