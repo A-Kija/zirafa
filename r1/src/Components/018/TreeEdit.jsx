@@ -5,6 +5,15 @@ function TreeEdit({editTreeModalData, setEditTreeModalData}) {
     const [height, setHeight] = useState('');
     const [type, setType] = useState('1');
 
+    useEffect(() => {
+        if (null === editTreeModalData) {
+            return;
+        }
+        setTitle(editTreeModalData.title);
+        setHeight(editTreeModalData.height);
+        setType(editTreeModalData.type);
+    }, [editTreeModalData])
+
     // const clickAdd = () => {
     //     setCreateTreeData({ title, height, type });
     //     setTitle('');

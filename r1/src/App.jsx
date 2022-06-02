@@ -122,7 +122,7 @@ function App() {
                 </div>
             </div>
             <TreeEdit editTreeModalData={editTreeModalData} setEditTreeModalData={setEditTreeModalData}></TreeEdit>
-            <AnimalEdit editAnimalModalData={editAnimalModalData}></AnimalEdit>
+            <AnimalEdit setEditAnimalModalData={setEditAnimalModalData} editAnimalModalData={editAnimalModalData}></AnimalEdit>
         </>
     );
 
