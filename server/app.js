@@ -3,9 +3,9 @@ const app = express();
 const port = 3003;
 
 app.use(
-  express.urlencoded({
-    extended: true,
-  })
+    express.urlencoded({
+        extended: true,
+    })
 );
 app.use(express.json());
 
@@ -14,35 +14,52 @@ app.use(cors());
 
 const mysql = require("mysql");
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "labas",
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "labas",
 });
 
 // READ
 app.get("/trees", (req, res) => {
-  const sql = `
+    const sql = `
   SELECT
   *
   FROM trees
 `;
-  con.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
 });
 
 app.get("/animals", (req, res) => {
-  const sql = `
+    const sql = `
   SELECT
   *
   FROM animals
 `;
-  con.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+//CREATE
+
+app.post("/trees", (req, res) => {
+    const sql = `
+        INSERT INTO trees
+        (title, height, type)
+        VALUES (?, ?, ?)
+    `;
+    con.query(
+        sql, [req.body.title, !req.body.height ? 0 : req.body.height, req.body.type],
+        (err, results) => {
+            if (err) throw err;
+            res.send(results);
+        }
+    );
 });
 
 
@@ -51,9 +68,9 @@ app.get("/animals", (req, res) => {
 
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+    res.send("Hello World!");
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 });

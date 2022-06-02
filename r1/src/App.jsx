@@ -17,6 +17,7 @@ function App() {
     const [createTreeData, setCreateTreeData] = useState(null);
     const [createAnimalData, setCreateAnimalData] = useState(null);
 
+
     // READ
     useEffect(() => {
         axios.get('http://localhost:3003/trees')
@@ -30,6 +31,17 @@ function App() {
             setAnimalList(res.data);
         })
     }, []);
+
+    // CREATE
+    useEffect(() => {
+        if (null === createTreeData) {
+            return;
+        }
+        axios.post('http://localhost:3003/trees', createTreeData)
+        .then(res => {
+            console.log(res.data);
+        })
+    }, [createTreeData]);
 
 
     return (

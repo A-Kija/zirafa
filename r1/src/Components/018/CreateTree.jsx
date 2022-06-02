@@ -12,6 +12,7 @@ function CreateTree({setCreateTreeData}) {
         setType('1');
     }
 
+    
     return (
         <div className="card m-4">
             <div className="card-header">
