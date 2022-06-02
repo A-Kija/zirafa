@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-function TreeEdit({editTreeModalData}) {
+function TreeEdit({editTreeModalData, setEditTreeModalData}) {
 
     const [title, setTitle] = useState('');
     const [height, setHeight] = useState('');
@@ -22,7 +22,7 @@ function TreeEdit({editTreeModalData}) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title">Edit Trees</h5>
-                        <button type="button" className="close">
+                        <button type="button" className="close" onClick={() => setEditTreeModalData(null)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -44,7 +44,7 @@ function TreeEdit({editTreeModalData}) {
                             </select>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-outline-secondary">Close</button>
+                            <button type="button" className="btn btn-outline-secondary" onClick={() => setEditTreeModalData(null)}>Close</button>
                             <button type="button" className="btn btn-outline-primary">Save changes</button>
                         </div>
                     </div>
