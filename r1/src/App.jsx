@@ -18,6 +18,7 @@ function App() {
     const [editTreeModalData, setEditTreeModalData] = useState(null);
     const [editAnimalModalData, setEditAnimalModalData] = useState(null);
 
+
     const [treeList, setTreeList] = useState(null);
     const [animalList, setAnimalList] = useState(null);
 
@@ -26,6 +27,8 @@ function App() {
 
     const [deleteTreeData, setDeleteTreeData] = useState(null);
     const [deleteAnimalData, setAnimalTreeData] = useState(null);
+
+    const [editTreeData, setEditTreeData] = useState(null);
 
 
     // READ
@@ -83,6 +86,17 @@ function App() {
         })
     }, [deleteAnimalData]);
 
+    // EDIT
+        useEffect(() => {
+            if (null === editTreeData) {
+                return;
+            }
+            axios.put('http://localhost:3003/trees/' + editTreeData.id, editTreeData)
+            .then(res => {
+                setLastTreeUpdate(Date.now());
+            })
+        }, [editTreeData]);
+
 
     return (
         <>
@@ -121,7 +135,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            <TreeEdit editTreeModalData={editTreeModalData} setEditTreeModalData={setEditTreeModalData}></TreeEdit>
+            <TreeEdit setEditTreeData={setEditTreeData} editTreeModalData={editTreeModalData} setEditTreeModalData={setEditTreeModalData}></TreeEdit>
             <AnimalEdit setEditAnimalModalData={setEditAnimalModalData} editAnimalModalData={editAnimalModalData}></AnimalEdit>
         </>
     );

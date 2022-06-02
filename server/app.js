@@ -98,6 +98,19 @@ app.delete("/animals/:id", (req, res) => {
     });
 });
 
+// EDIT
+app.put("/trees/:id", (req, res) => {
+    const sql = `
+        UPDATE trees
+        SET title = ?, type = ?, height = ?
+        WHERE id = ?
+    `;
+    con.query(sql, [req.body.title, req.body.type, req.body.height, req.params.id], (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
+
 
 
 
