@@ -11,6 +11,7 @@ import CreateAnimal from './Components/018/CreateAnimal';
 function App() {
 
     const [lastTreeUpdate, setLastTreeUpdate] = useState(Date.now());
+    const [lastAnimalUpdate, setLastAnimalUpdate] = useState(Date.now());
 
     const [treeList, setTreeList] = useState(null);
     const [animalList, setAnimalList] = useState(null);
@@ -31,7 +32,7 @@ function App() {
         .then(res => {
             setAnimalList(res.data);
         })
-    }, []);
+    }, [lastAnimalUpdate]);
 
     // CREATE
     useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
         }
         axios.post('http://localhost:3003/animals', createAnimalData)
         .then(res => {
-            console.log(res.data);
+            setLastAnimalUpdate(Date.now());
         })
     }, [createAnimalData]);
 

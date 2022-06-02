@@ -65,11 +65,11 @@ app.post("/trees", (req, res) => {
 app.post("/animals", (req, res) => {
     const sql = `
       INSERT INTO animals
-      (name, age, type, has_owner)
+      (name, type, has_owner, age)
       VALUES (?, ?, ?, ?)
   `;
     con.query(
-        sql, [req.body.name, !req.body.age ? 0 : req.body.age, req.body.type, req.body.has_owner],
+        sql, [req.body.name, req.body.type, req.body.has_owner, !req.body.age ? 0 : req.body.age],
         (err, results) => {
             if (err) throw err;
             res.send(results);
