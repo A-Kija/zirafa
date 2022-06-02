@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-function TreeEdit({editTreeModalData}) {
+function AnimalEdit({ editAnimalModalData }) {
 
-    const [title, setTitle] = useState('');
-    const [height, setHeight] = useState('');
+    const [name, setName] = useState('');
+    const [age, setAge] = useState('');
     const [type, setType] = useState('1');
+    const [hasOwner, setHasOwner] = useState(false);
 
     // const clickAdd = () => {
     //     setCreateTreeData({ title, height, type });
@@ -12,7 +13,7 @@ function TreeEdit({editTreeModalData}) {
     //     setType('1');
     // }
 
-    if (!editTreeModalData) {
+    if (!editAnimalModalData) {
         return null;
     }
 
@@ -21,27 +22,34 @@ function TreeEdit({editTreeModalData}) {
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">Edit Trees</h5>
+                        <h5 className="modal-title">Edit Animals</h5>
                         <button type="button" className="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <div className="form-group">
-                            <label>Title</label>
-                            <input type="text" className="form-control" onChange={e => setTitle(e.target.value)} value={title} />
+                            <label>Name</label>
+                            <input type="text" className="form-control" onChange={e => setName(e.target.value)} value={name} />
                         </div>
                         <div className="form-group">
-                            <label>Height</label>
-                            <input type="text" className="form-control" onChange={e => setHeight(e.target.value)} value={height} />
+                            <label>Age</label>
+                            <input type="text" className="form-control" onChange={e => setAge(e.target.value)} value={age} />
                         </div>
                         <div className="form-group">
                             <label>Type select</label>
                             <select className="form-control" value={type} onChange={e => setType(e.target.value)}>
-                                <option value="1">Leaf</option>
-                                <option value="2">Spike</option>
-                                <option value="3">Palm</option>
+                                <option value="1">Cat</option>
+                                <option value="2">Dog</option>
+                                <option value="3">Rat</option>
+                                <option value="4">Racoon</option>
                             </select>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="has-owner" checked={hasOwner} onChange={() => setHasOwner(o => !o)} />
+                            <label className="form-check-label" htmlFor="has-owner">
+                                Has Owner
+                            </label>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-outline-secondary">Close</button>
@@ -54,4 +62,4 @@ function TreeEdit({editTreeModalData}) {
     );
 }
 
-export default TreeEdit;
+export default AnimalEdit;

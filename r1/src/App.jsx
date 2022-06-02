@@ -8,13 +8,15 @@ import Animal from './Components/018/Animal';
 import CreateTree from './Components/018/CreateTree';
 import CreateAnimal from './Components/018/CreateAnimal';
 import TreeEdit from './Components/018/TreeEdit';
+import AnimalEdit from './Components/018/AnimalEdit';
 
 function App() {
 
     const [lastTreeUpdate, setLastTreeUpdate] = useState(Date.now());
     const [lastAnimalUpdate, setLastAnimalUpdate] = useState(Date.now());
 
-    const [editTreeModalData, setEditTreeModalData] = useState(null)
+    const [editTreeModalData, setEditTreeModalData] = useState(null);
+    const [editAnimalModalData, setEditAnimalModalData] = useState(null);
 
     const [treeList, setTreeList] = useState(null);
     const [animalList, setAnimalList] = useState(null);
@@ -111,7 +113,7 @@ function App() {
                             <div className="card-body">
                                 <ul className="list-group">
                                 {
-                                        animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a} setAnimalTreeData={setAnimalTreeData}></Animal>) : null
+                                        animalList ? animalList.map((a, i) => <Animal key={a.id} index={i + 1} animal={a} setAnimalTreeData={setAnimalTreeData} setEditAnimalModalData={setEditAnimalModalData}></Animal>) : null
                                     }
                                 </ul>
                             </div>
@@ -120,6 +122,7 @@ function App() {
                 </div>
             </div>
             <TreeEdit editTreeModalData={editTreeModalData}></TreeEdit>
+            <AnimalEdit editAnimalModalData={editAnimalModalData}></AnimalEdit>
         </>
     );
 
