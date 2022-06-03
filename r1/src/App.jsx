@@ -46,7 +46,10 @@ function App() {
                                     <Route path="/" element={<Alabama/>}></Route>
                                     <Route path="/racoon/:can" element={<Racoon/>}></Route>
                                     <Route path="/cuckoo/:id/:color" element={<Cuckoo/>}></Route>
-                                    <Route path="/troll" element={<Troll/>}></Route>
+                                    <Route path="/troll" element={<Troll/>}>
+                                        <Route path="green" element={<div className="kv" style={{backgroundColor:'green'}}></div>}></Route>
+                                        <Route path="pink" element={<div className="kv" style={{backgroundColor:'pink'}}></div>}></Route>
+                                    </Route>
                                     <Route path="*" element={<NotFound/>}></Route>
                                 </Routes>
                             </div>
