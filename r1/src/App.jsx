@@ -1,6 +1,11 @@
 import './bootstrap.css';
 import './App.scss';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Alabama from './Components/020/Alabama';
+import Racoon from './Components/020/Racoon';
+import Cuckoo from './Components/020/Cuckoo';
+import Troll from './Components/020/Troll';
+import NotFound from './Components/020/NotFound';
 
 function App() {
 
@@ -16,7 +21,9 @@ function App() {
                             <div className="card-body">
                                 <div className="links">
                                     <Link to="/">Sweet Home Alabama</Link>
-                                    <Link to="/racoon">Racoon Trash Can</Link>
+                                    {
+                                        [1,1,1,1,1].map((_, i) => <Link key={i} to="/racoon">Racoon Trash Can No: {i + 1}</Link>)
+                                    }
                                     <Link to="/cuckoo">Cuckoo Nest</Link>
                                     <Link to="/troll">Troll Bridge</Link>
                                 </div>
@@ -30,11 +37,11 @@ function App() {
                             </div>
                             <div className="card-body">
                                 <Routes>
-                                    <Route path="/" element={<h1>Alabama</h1>}></Route>
-                                    <Route path="/racoon" element={<h1>Racoon</h1>}></Route>
-                                    <Route path="/cuckoo" element={<h1>Cuckoo</h1>}></Route>
-                                    <Route path="/troll" element={<h1>Troll</h1>}></Route>
-                                    <Route path="*" element={<h1>404 Not Found</h1>}></Route>
+                                    <Route path="/" element={<Alabama/>}></Route>
+                                    <Route path="/racoon" element={<Racoon/>}></Route>
+                                    <Route path="/cuckoo" element={<Cuckoo/>}></Route>
+                                    <Route path="/troll" element={<Troll/>}></Route>
+                                    <Route path="*" element={<NotFound/>}></Route>
                                 </Routes>
                             </div>
                         </div>
