@@ -31,6 +31,7 @@ function App() {
                                     {
                                         [...Array(rand(3, 7))].map((_, i) => <Link key={i} to={'/cuckoo/'+ (i + 1) + '/' + randColor(false)}>Cuckoo Nest No: {i + 1}</Link>)
                                     }
+                                    <h3>Troll</h3>
                                     <Link to="/troll">Troll Bridge</Link>
                                 </div>
                             </div>
