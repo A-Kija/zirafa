@@ -6,6 +6,7 @@ import Racoon from './Components/020/Racoon';
 import Cuckoo from './Components/020/Cuckoo';
 import Troll from './Components/020/Troll';
 import NotFound from './Components/020/NotFound';
+import rand from './Functions/rand';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
                                 <div className="links">
                                     <Link to="/">Sweet Home Alabama</Link>
                                     {
-                                        [...Array(5)].map((_, i) => <Link key={i} to="/racoon">Racoon Trash Can No: {i + 1}</Link>)
+                                        [...Array(rand(2, 11))].map((_, i) => <Link key={i} to={'/racoon/'+ (i + 1)}>Racoon Trash Can No: {i + 1}</Link>)
                                     }
                                     <Link to="/cuckoo">Cuckoo Nest</Link>
                                     <Link to="/troll">Troll Bridge</Link>
