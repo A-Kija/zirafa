@@ -32,6 +32,9 @@ function App() {
                                 <Routes>
                                     <Route path="/" element={<h1>Alabama</h1>}></Route>
                                     <Route path="/racoon" element={<h1>Racoon</h1>}></Route>
+                                    <Route path="/cuckoo" element={<h1>Cuckoo</h1>}></Route>
+                                    <Route path="/troll" element={<h1>Troll</h1>}></Route>
+                                    <Route path="*" element={<h1>404 Not Found</h1>}></Route>
                                 </Routes>
                             </div>
                         </div>
