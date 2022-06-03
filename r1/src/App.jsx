@@ -22,7 +22,7 @@ function App() {
                                 <div className="links">
                                     <Link to="/">Sweet Home Alabama</Link>
                                     {
-                                        [1,1,1,1,1].map((_, i) => <Link key={i} to="/racoon">Racoon Trash Can No: {i + 1}</Link>)
+                                        [...Array(5)].map((_, i) => <Link key={i} to="/racoon">Racoon Trash Can No: {i + 1}</Link>)
                                     }
                                     <Link to="/cuckoo">Cuckoo Nest</Link>
                                     <Link to="/troll">Troll Bridge</Link>
