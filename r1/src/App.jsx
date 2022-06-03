@@ -1,6 +1,6 @@
 import './bootstrap.css';
 import './App.scss';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -16,8 +16,9 @@ function App() {
                             <div className="card-body">
                                 <div className="links">
                                     <Link to="/">Sweet Home Alabama</Link>
-                                    <Link to="/racoon">Racoon Home</Link>
+                                    <Link to="/racoon">Racoon Trash Can</Link>
                                     <Link to="/cuckoo">Cuckoo Nest</Link>
+                                    <Link to="/troll">Troll Bridge</Link>
                                 </div>
                             </div>
                         </div>
@@ -25,10 +26,13 @@ function App() {
                     <div className="col-8">
                         <div className="card m-4">
                             <div className="card-header">
-                                <h2>Head</h2>
+                                <h2>Homes</h2>
                             </div>
                             <div className="card-body">
-                                body
+                                <Routes>
+                                    <Route path="/" element={<h1>Alabama</h1>}></Route>
+                                    <Route path="/racoon" element={<h1>Racoon</h1>}></Route>
+                                </Routes>
                             </div>
                         </div>
                     </div>
