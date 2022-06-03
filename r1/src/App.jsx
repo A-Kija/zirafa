@@ -39,7 +39,7 @@ function App() {
                             <div className="card-body">
                                 <Routes>
                                     <Route path="/" element={<Alabama/>}></Route>
-                                    <Route path="/racoon" element={<Racoon/>}></Route>
+                                    <Route path="/racoon/:can" element={<Racoon/>}></Route>
                                     <Route path="/cuckoo" element={<Cuckoo/>}></Route>
                                     <Route path="/troll" element={<Troll/>}></Route>
                                     <Route path="*" element={<NotFound/>}></Route>
