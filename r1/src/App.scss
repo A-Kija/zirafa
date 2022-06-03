@@ -335,3 +335,18 @@ button.a {
         background-color: crimson;
     }
 }
+
+.links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 10px 10px 10px 30px;
+    a {
+        color: coral;
+        transition: all 0.6s;
+        &:hover {
+            color: crimson;
+        }
+    }
+}
