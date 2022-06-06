@@ -4,6 +4,12 @@ function colorReducer(state, action) {
         case 'make_black':
             newState = 'black';
             break;
+        case 'make_blue':
+            newState = 'blue';
+            break;
+        case 'make_blue_black':
+            newState = state === 'blue' ? 'black' : 'blue';
+            break;
         default:
             newState = state;
     }
