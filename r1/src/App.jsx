@@ -3,12 +3,15 @@ import './App.scss';
 import colorReducer from './Reducers/colorReducer';
 import randColor from './Functions/randColor';
 import textReducer from './Reducers/textReducer';
+import listReducer from './Reducers/listReducer';
 
 function App() {
 
     const [color, dispachColor] = useReducer(colorReducer, 'brown');
     const [text, dispachText] = useReducer(textReducer, '0000');
+    const [list, dispachList] = useReducer(listReducer, []);
     const [colorInput, setColorInput] = useState('#000111');
+    const [textInput, setTextInput] = useState('');
 
     const doBlack = () => {
         const action = {
@@ -54,10 +57,26 @@ function App() {
         }
         dispachText(action);
     }
+    const doInputText = () => {
+        const action = {
+            type: 'input_text',
+            payload: textInput
+        }
+        dispachText(action);
+    }
+    const newList = () => {
+        const action = {
+            type: 'new_list'
+        }
+        dispachList(action);
+    }
 
     return (
         <div className="App">
             <header className="App-header">
+                {
+                    list.map((d, i) => <div key={i}>{d}</div>)
+                }
                 <h1 style={{backgroundColor:color}}>{text}</h1>
                 <div className="kvc">
                 <button className="a" onClick={doBlack}>BLACK</button>
@@ -70,6 +89,11 @@ function App() {
                 </div>
                 <div className="kvc">
                 <button className="a" onClick={doRandText}>RANDOM</button>
+                <input type="text" onChange={e => setTextInput(e.target.value)} value={textInput}></input>
+                <button className="a" onClick={doInputText}>INPUT</button>
+                </div>
+                <div className="kvc">
+                <button className="a" onClick={newList}>NEW LIST</button>
                 </div>
             </header>
         </div>
