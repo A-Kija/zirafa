@@ -2,10 +2,12 @@ import { useReducer, useState } from 'react';
 import './App.scss';
 import colorReducer from './Reducers/colorReducer';
 import randColor from './Functions/randColor';
+import textReducer from './Reducers/textReducer';
 
 function App() {
 
     const [color, dispachColor] = useReducer(colorReducer, 'brown');
+    const [text, dispachText] = useReducer(textReducer, '0000');
     const [colorInput, setColorInput] = useState('#000111');
 
     const doBlack = () => {
@@ -46,11 +48,17 @@ function App() {
         }
         dispachColor(action);
     }
+    const doRandText = () => {
+        const action = {
+            type: 'rand_text'
+        }
+        dispachText(action);
+    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1 style={{backgroundColor:color}}>Reducer</h1>
+                <h1 style={{backgroundColor:color}}>{text}</h1>
                 <div className="kvc">
                 <button className="a" onClick={doBlack}>BLACK</button>
                 <button className="a" onClick={doBlue}>BLUE</button>
@@ -59,6 +67,9 @@ function App() {
                 <button className="a" onClick={doRand2}>RANDOM2</button>
                 <input type="color" onChange={e => setColorInput(e.target.value)} value={colorInput}></input>
                 <button className="a" onClick={doInputColor}>INPUT</button>
+                </div>
+                <div className="kvc">
+                <button className="a" onClick={doRandText}>RANDOM</button>
                 </div>
             </header>
         </div>
