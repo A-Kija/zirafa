@@ -24,6 +24,12 @@ function App() {
         }
         dispachColor(action);
     }
+    const doRand = () => {
+        const action = {
+            type: 'make_rand'
+        }
+        dispachColor(action);
+    }
 
     return (
         <div className="App">
@@ -32,6 +38,7 @@ function App() {
                 <button className="a" onClick={doBlack}>BLACK</button>
                 <button className="a" onClick={doBlue}>BLUE</button>
                 <button className="a" onClick={doBlueBlack}>BLUE/BLACK</button>
+                <button className="a" onClick={doRand}>RANDOM</button>
             </header>
         </div>
     );

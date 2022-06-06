@@ -1,3 +1,5 @@
+import randColor from '../Functions/randColor';
+
 function colorReducer(state, action) {
     let newState;
     switch (action.type) {
@@ -9,6 +11,9 @@ function colorReducer(state, action) {
             break;
         case 'make_blue_black':
             newState = state === 'blue' ? 'black' : 'blue';
+            break;
+        case 'make_rand':
+            newState = randColor();
             break;
         default:
             newState = state;
