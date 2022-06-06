@@ -15,6 +15,12 @@ function colorReducer(state, action) {
         case 'make_rand':
             newState = randColor();
             break;
+        case 'make_rand2':
+            newState = action.payload;
+            break;
+        case 'make_input':
+            newState = action.payload;
+            break;
         default:
             newState = state;
     }
