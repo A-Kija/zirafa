@@ -32,6 +32,9 @@ function listReducer(state, action) {
         case 'all_list':
             newState = state.map(e => ({...e, show: true }))
             break;
+        case 'input_filter_list':
+            newState = state.map(e => e.number > action.payload ? {...e, show: true } : {...e, show: false })
+            break;
         default:
             newState = [...state];
     }

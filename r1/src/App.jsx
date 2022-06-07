@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import './App.scss';
 import colorReducer from './Reducers/colorReducer';
 import randColor from './Functions/randColor';
@@ -11,6 +11,7 @@ function App() {
     const [text, dispachText] = useReducer(textReducer, '0000');
     const [list, dispachList] = useReducer(listReducer, []);
     const [colorInput, setColorInput] = useState('#000111');
+    const [filterText, setFilterText] = useState('0');
     const [textInput, setTextInput] = useState('');
 
     const doBlack = () => {
@@ -109,6 +110,26 @@ function App() {
         dispachList(action);
     }
 
+    const filterInput = () => {
+        const action = {
+            type: 'input_filter_list',
+            payload: filterText
+        }
+        dispachList(action);
+    }
+
+    // useEffect(() => {
+    //     if (filterText == 0) {
+    //         return
+    //     }
+    //     const action = {
+    //         type: 'input_filter_list',
+    //         payload: filterText
+    //     }
+    //     dispachList(action);
+
+    // }, [filterText])
+
 
 
     
@@ -142,6 +163,8 @@ function App() {
                 <button className="a b" onClick={filterMore500}>FILTER MORE 500</button>
                 <button className="a b" onClick={filterLess400}>FILTER LESS 400</button>
                 <button className="a c" onClick={allList}>SHOW ALL LIST</button>
+                <input type="number" min="0" max="1000" step="50" value={filterText} onChange={e => setFilterText(e.target.value)}></input>
+                <button className="a c" onClick={filterInput}>FILTER INPUT</button>
                 </div>
             </header>
         </div>
