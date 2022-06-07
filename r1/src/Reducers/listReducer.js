@@ -5,14 +5,18 @@ function listReducer(state, action) {
     let newState;
     switch (action.type) {
         case 'new_list':
-            newState = [...Array(10)].map(_ => ({
+            newState = [...Array(10)].map((_, i) => ({
                 number: rand(100, 999),
                 color: randColor(),
-                show: true
+                show: true,
+                row: i
             }));
             break;
         case 'sort_list':
             newState = [...state].sort((a, b) => b.number - a.number);
+            break;
+        case 'def_sort_list':
+            newState = [...state].sort((a, b) => a.row - b.row);
             break;
         case 'add_list':
             newState = [...state, { number: rand(100, 999), color: '#000000', show: true }]

@@ -102,6 +102,13 @@ function App() {
         dispachList(action);
     }
 
+    const defaultList = () => {
+        const action = {
+            type: 'def_sort_list'
+        }
+        dispachList(action);
+    }
+
 
 
     
@@ -130,6 +137,7 @@ function App() {
                 <div className="kvc">
                 <button className="a" onClick={newList}>NEW LIST</button>
                 <button className="a b" onClick={sortList}>SORT LIST</button>
+                <button className="a b" onClick={defaultList}>DEFAULT SORT LIST</button>
                 <button className="a b" onClick={addNew}>ADD NEW TO LIST</button>
                 <button className="a b" onClick={filterMore500}>FILTER MORE 500</button>
                 <button className="a b" onClick={filterLess400}>FILTER LESS 400</button>
