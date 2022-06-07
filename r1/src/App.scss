@@ -173,6 +173,17 @@ button.a {
     }
 }
 
+$colorb: crimson;
+button.b {
+    border: 1px solid $colorb;
+    &:after {
+        background-color: $colorb;
+    }
+    &:before {
+        background-color: darken($colorb, 15%);
+    }
+}
+
 .big {
     font-size: 77px;
 }
