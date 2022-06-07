@@ -98,7 +98,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 {
-                    list.map((d, i) => <div key={i} style={{color:d.color}}>{d.number}</div>)
+                    list.map((d, i) => d.show ? <div key={i} style={{color:d.color}}>{d.number}</div> : null)
                 }
                 <h1 style={{backgroundColor:color}}>{text}</h1>
                 <div className="kvc">

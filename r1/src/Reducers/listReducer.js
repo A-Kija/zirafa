@@ -5,7 +5,11 @@ function listReducer(state, action) {
     let newState;
     switch (action.type) {
         case 'new_list':
-            newState = [...Array(10)].map(_ => ({ number: rand(100, 999), color: randColor() }));
+            newState = [...Array(10)].map(_ => ({
+                number: rand(100, 999),
+                color: randColor(),
+                show: true
+            }));
             break;
         case 'sort_list':
             newState = [...state].sort((a, b) => b.number - a.number);
@@ -14,7 +18,8 @@ function listReducer(state, action) {
             newState = [...state, { number: rand(100, 999), color: '#000000' }]
             break;
         case 'more500_list':
-            newState = state.filter(e => e.number > 500);
+            // newState = state.filter(e => e.number > 500);
+            newState = state.map(e => e.number > 500 ? {...e, show: true } : {...e, show: false })
             break;
         default:
             newState = [...state];
