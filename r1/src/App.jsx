@@ -83,6 +83,16 @@ function App() {
         }
         dispachList(action);
     }
+    const filterMore500 = () => {
+        const action = {
+            type: 'more500_list'
+        }
+        dispachList(action);
+    }
+
+
+
+    
 
     return (
         <div className="App">
@@ -109,6 +119,7 @@ function App() {
                 <button className="a" onClick={newList}>NEW LIST</button>
                 <button className="a b" onClick={sortList}>SORT LIST</button>
                 <button className="a b" onClick={addNew}>ADD NEW TO LIST</button>
+                <button className="a b" onClick={filterMore500}>FILTER MORE 500</button>
                 </div>
             </header>
         </div>

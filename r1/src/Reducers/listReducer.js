@@ -13,6 +13,9 @@ function listReducer(state, action) {
         case 'add_list':
             newState = [...state, { number: rand(100, 999), color: '#000000' }]
             break;
+        case 'more500_list':
+            newState = state.filter(e => e.number > 500);
+            break;
         default:
             newState = [...state];
     }
