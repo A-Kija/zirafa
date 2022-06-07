@@ -15,11 +15,18 @@ function listReducer(state, action) {
             newState = [...state].sort((a, b) => b.number - a.number);
             break;
         case 'add_list':
-            newState = [...state, { number: rand(100, 999), color: '#000000' }]
+            newState = [...state, { number: rand(100, 999), color: '#000000', show: true }]
             break;
         case 'more500_list':
             // newState = state.filter(e => e.number > 500);
             newState = state.map(e => e.number > 500 ? {...e, show: true } : {...e, show: false })
+            break;
+        case 'less400_list':
+            // newState = state.filter(e => e.number > 500);
+            newState = state.map(e => e.number < 400 ? {...e, show: true } : {...e, show: false })
+            break;
+        case 'all_list':
+            newState = state.map(e => ({...e, show: true }))
             break;
         default:
             newState = [...state];

@@ -89,6 +89,18 @@ function App() {
         }
         dispachList(action);
     }
+    const filterLess400 = () => {
+        const action = {
+            type: 'less400_list'
+        }
+        dispachList(action);
+    }
+    const allList = () => {
+        const action = {
+            type: 'all_list'
+        }
+        dispachList(action);
+    }
 
 
 
@@ -120,6 +132,8 @@ function App() {
                 <button className="a b" onClick={sortList}>SORT LIST</button>
                 <button className="a b" onClick={addNew}>ADD NEW TO LIST</button>
                 <button className="a b" onClick={filterMore500}>FILTER MORE 500</button>
+                <button className="a b" onClick={filterLess400}>FILTER LESS 400</button>
+                <button className="a c" onClick={allList}>SHOW ALL LIST</button>
                 </div>
             </header>
         </div>

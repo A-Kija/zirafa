@@ -184,6 +184,17 @@ button.b {
     }
 }
 
+$colorc: pink;
+button.c {
+    border: 1px solid $colorc;
+    &:after {
+        background-color: $colorc;
+    }
+    &:before {
+        background-color: darken($colorc, 15%);
+    }
+}
+
 .big {
     font-size: 77px;
 }
