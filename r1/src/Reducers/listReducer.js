@@ -8,7 +8,10 @@ function listReducer(state, action) {
             newState = [...Array(10)].map(_ => ({ number: rand(100, 999), color: randColor() }));
             break;
         case 'sort_list':
-            newState = [...state].sort((a, b) => b - a);
+            newState = [...state].sort((a, b) => b.number - a.number);
+            break;
+        case 'add_list':
+            newState = [...state, { number: rand(100, 999), color: '#000000' }]
             break;
         default:
             newState = [...state];

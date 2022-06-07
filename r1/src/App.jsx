@@ -77,11 +77,18 @@ function App() {
         dispachList(action);
     }
 
+    const addNew = () => {
+        const action = {
+            type: 'add_list'
+        }
+        dispachList(action);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
                 {
-                    list.map((d, i) => <div key={i}>{d.number}</div>)
+                    list.map((d, i) => <div key={i} style={{color:d.color}}>{d.number}</div>)
                 }
                 <h1 style={{backgroundColor:color}}>{text}</h1>
                 <div className="kvc">
@@ -101,6 +108,7 @@ function App() {
                 <div className="kvc">
                 <button className="a" onClick={newList}>NEW LIST</button>
                 <button className="a b" onClick={sortList}>SORT LIST</button>
+                <button className="a b" onClick={addNew}>ADD NEW TO LIST</button>
                 </div>
             </header>
         </div>
