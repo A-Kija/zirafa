@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import './App.scss';
 import axios from 'axios';
 import booksReducer from './Reducers/booksReducer';
@@ -6,6 +6,7 @@ import booksReducer from './Reducers/booksReducer';
 function App() {
 
     const [books, dispachBooks] = useReducer(booksReducer, []);
+    const [reload, setReload] = useState(false);
 
     useEffect(()=> {
         axios.get('https://in3.dev/knygos/')
@@ -16,7 +17,7 @@ function App() {
             }
             dispachBooks(action);
         });
-    }, []);
+    }, [reload]);
 
     const sortByName = () => {
         const action = {
@@ -31,6 +32,28 @@ function App() {
         };
         dispachBooks(action);
     }
+
+    const filterMore13 = () => {
+        const action = {
+            type: 'filter_more_13'
+        };
+        dispachBooks(action);
+    }
+
+    const showAll = () => {
+        const action = {
+            type: 'show_all'
+        };
+        dispachBooks(action);
+    }
+
+    const doReload = () => {
+        const action = {
+            type: 'reload'
+        };
+        dispachBooks(action);
+        setReload(r => !r);
+    }
     
 
     return (
@@ -39,11 +62,14 @@ function App() {
                 <div className="kvc p">
                     <button className="a" onClick={sortByName}>Sort by name</button>
                     <button className="a" onClick={sortByDefault}>Sort by default</button>
+                    <button className="a" onClick={filterMore13}>More 13</button>
+                    <button className="a" onClick={showAll}>all</button>
+                    <button className="a b" onClick={doReload}>Reload</button>
                 </div>
                 <h1>Books</h1>
                 <div>
                 {
-                    books.length ? books.map(b => <div key={b.id}>{b.title}</div>) : <h2>Loading...</h2>
+                    books.length ? books.map(b => b.show ? <div key={b.id}>{b.title} <small><i>{b.price} EUR</i></small></div> : null) : <h2>Loading...</h2>
                 }
                 </div>
             </header>
