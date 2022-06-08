@@ -24,13 +24,21 @@ function App() {
         };
         dispachBooks(action);
     }
+
+    const sortByDefault = () => {
+        const action = {
+            type: 'sort_by_default'
+        };
+        dispachBooks(action);
+    }
     
 
     return (
         <div className="App">
             <header className="App-header">
-                <div className="kvc">
+                <div className="kvc p">
                     <button className="a" onClick={sortByName}>Sort by name</button>
+                    <button className="a" onClick={sortByDefault}>Sort by default</button>
                 </div>
                 <h1>Books</h1>
                 <div>

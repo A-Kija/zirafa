@@ -22,7 +22,6 @@
     justify-content: flex-start;
     font-size: calc(10px + 2vmin);
     color: white;
-    padding-top: 40px;
 }
 
 .App-link {
@@ -276,6 +275,9 @@ button.c {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    &.p {
+        padding-top: 40px;
+    }
     .kv {
         display: flex;
         justify-content: center;
