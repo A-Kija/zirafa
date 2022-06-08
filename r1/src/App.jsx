@@ -1,24 +1,41 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import './App.scss';
 import axios from 'axios';
+import booksReducer from './Reducers/booksReducer';
 
 function App() {
 
-    const [books, setBooks] = useState([]);
+    const [books, dispachBooks] = useReducer(booksReducer, []);
 
     useEffect(()=> {
         axios.get('https://in3.dev/knygos/')
-        .then(res => setBooks(res.data));
+        .then(res => {
+            const action = {
+                type: 'get_from_server',
+                payload: res.data
+            }
+            dispachBooks(action);
+        });
     }, []);
+
+    const sortByName = () => {
+        const action = {
+            type: 'sort_by_name'
+        };
+        dispachBooks(action);
+    }
     
 
     return (
         <div className="App">
             <header className="App-header">
+                <div className="kvc">
+                    <button className="a" onClick={sortByName}>Sort by name</button>
+                </div>
                 <h1>Books</h1>
                 <div>
                 {
-                    books.map(b => <div key={b.id}>{b.title}</div>)
+                    books.length ? books.map(b => <div key={b.id}>{b.title}</div>) : <h2>Loading...</h2>
                 }
                 </div>
             </header>
