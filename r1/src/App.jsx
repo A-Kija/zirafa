@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.scss';
 import Number3 from './Components/023/Number3';
 import Number5 from './Components/023/Number5';
@@ -11,6 +11,16 @@ function App() {
     const [number5, setNumber5] = useState(1);
     const [number7, setNumber7] = useState(7);
     const [number9, setNumber9] = useState(9);
+
+    const abc = useCallback(() => {
+        console.log('ABC ' + number);
+    }, [number]);
+
+    useEffect(() => {
+        // console.log('GO')
+        abc();
+    }, [abc]);
+
 
     return (
         <Number5.Provider value={number5}>
