@@ -10,10 +10,11 @@ function App() {
     const [number3, setNumber3] = useState(3);
     const [number5, setNumber5] = useState(1);
     const [number7, setNumber7] = useState(7);
+    const [number9, setNumber9] = useState(9);
 
     return (
         <Number5.Provider value={number5}>
-        <Number3.Provider value={{number3, number7}}>
+        <Number3.Provider value={{number3, number7, setNumber9}}>
         <div className="App">
             <header className="App-header">
                 <div className="kvc">
@@ -21,6 +22,7 @@ function App() {
                     <button className="a b" onClick={() => setNumber3(n => n + 3)}>+3</button>
                     <button className="a b" onClick={() => setNumber5(n => n + 5)}>+5</button>
                     <button className="a b" onClick={() => setNumber7(n => n + 7)}>+7</button>
+                    <h2>{number9}</h2>
                 </div>
                 <h1>Context</h1>
                 <Te number={number}></Te>

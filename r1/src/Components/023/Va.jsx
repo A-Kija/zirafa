@@ -4,7 +4,7 @@ import Number5 from "./Number5";
 
 function Va({ number }) {
 
-    const { number3, number7 } = useContext(Number3);
+    const { number3, number7, setNumber9 } = useContext(Number3);
 
     return (
         <>
@@ -16,7 +16,7 @@ function Va({ number }) {
             </Number5.Consumer>
             <h2>3: {number3}</h2>
             <h2>7: {number7}</h2>
-
+            <button className="a b" onClick={() => setNumber9(n => n + 9)}>+9</button>
 
         </>
     );
