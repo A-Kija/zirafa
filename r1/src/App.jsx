@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './App.scss';
 import Number3 from './Components/023/Number3';
 import Number5 from './Components/023/Number5';
@@ -21,6 +21,18 @@ function App() {
         abc();
     }, [abc]);
 
+    const aaa = (a, b) => {
+        console.log('skaiciuoja')
+        return a + b;
+    }
+
+
+    const memoizedResult = useMemo(() => {
+        return aaa(number, number3);
+      }, [number, number3]);
+
+    //   const memoizedResult = aaa(number, number3);
+
 
     return (
         <Number5.Provider value={number5}>
@@ -34,7 +46,7 @@ function App() {
                     <button className="a b" onClick={() => setNumber7(n => n + 7)}>+7</button>
                     <h2>{number9}</h2>
                 </div>
-                <h1>Context</h1>
+                <h1>Context {memoizedResult}</h1>
                 <Te number={number}></Te>
             </header>
         </div>
