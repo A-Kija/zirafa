@@ -1,7 +1,9 @@
+import '../../bootstrap.css';
+import '../../back.scss';
 function Back() {
   return (
     <div>
-      BACK
+      <h1>BACK</h1>
     </div>
   );
 }

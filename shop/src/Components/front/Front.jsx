@@ -1,7 +1,7 @@
 function Front() {
     return (
       <div>
-        BACK
+        FRONT
       </div>
     );
   }
