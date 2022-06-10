@@ -2,11 +2,18 @@ import '../../bootstrap.css';
 import '../../back.scss';
 import BackContext from '../../Contexts/BackContext';
 import NavBar from './NavBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductsList from './ProductsList';
+import axios from 'axios';
 function Back() {
 
     const [products, setProducts] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://localhost:3003/admin/products')
+        .then(res => setProducts(res.data));
+
+    }, []);
 
     return (
         <BackContext.Provider value={{products}}>
