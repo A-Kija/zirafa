@@ -11,7 +11,7 @@ function ProductsList() {
 
     return (
         <div className="col-7">
-            <div className="card">
+            <div className="card mt-4">
                 <div className="card-header">
                     <h2>Produktų Sąrašas</h2>
                 </div>
