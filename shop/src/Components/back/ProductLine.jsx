@@ -1,8 +1,8 @@
-function ProductLine() {
+function ProductLine({product}) {
 
     return (
         <li className="list-group-item">
-            An item
+            {product.title}
         </li>
     );
 }
