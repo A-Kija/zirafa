@@ -1,6 +1,7 @@
 function NavBar() {
 
     return (
+        <div className="col-12">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand"  href="/">BiG Shop</a>
             <button className="navbar-toggler" type="button">
@@ -15,6 +16,7 @@ function NavBar() {
                 </div>
             </div>
         </nav>
+        </div>
     )
 }
 
