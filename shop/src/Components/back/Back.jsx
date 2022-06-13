@@ -14,16 +14,17 @@ function Back() {
 
     useEffect(() => {
         axios.get('http://localhost:3003/admin/products')
-        .then(res => setProducts(res.data));
+            .then(res => setProducts(res.data));
     }, []);
 
     useEffect(() => {
-        // axios.post('http://localhost:3003/admin/products', createProductData)
-        // .then(res => console.log(res.data));
+        if (createProductData === null) return;
+        axios.post('http://localhost:3003/admin/products', createProductData)
+            .then(res => console.log(res.data));
     }, [createProductData]);
 
     return (
-        <BackContext.Provider value={{products, setCreateProductData}}>
+        <BackContext.Provider value={{ products, setCreateProductData }}>
             <div className="container">
                 <div className="row">
                     <NavBar></NavBar>

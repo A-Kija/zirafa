@@ -33,48 +33,23 @@ app.get("/admin/products", (req, res) => {
     });
 });
 
-// app.get("/animals", (req, res) => {
-//     const sql = `
-//   SELECT
-//   *
-//   FROM animals
-// `;
-//     con.query(sql, (err, result) => {
-//         if (err) throw err;
-//         res.send(result);
-//     });
-// });
+//CREATE
+app.post("/admin/products", (req, res) => {
+    const sql = `
+        INSERT INTO products
+        (title, code, price, description)
+        VALUES (?, ?, ?, ?)
+    `;
+    con.query(
+        sql, [req.body.title, req.body.code, req.body.price, req.body.description],
+        (err, results) => {
+            if (err) throw err;
+            res.send(results);
+        }
+    );
+});
 
-// //CREATE
 
-// app.post("/trees", (req, res) => {
-//     const sql = `
-//         INSERT INTO trees
-//         (title, height, type)
-//         VALUES (?, ?, ?)
-//     `;
-//     con.query(
-//         sql, [req.body.title, !req.body.height ? 0 : req.body.height, req.body.type],
-//         (err, results) => {
-//             if (err) throw err;
-//             res.send(results);
-//         }
-//     );
-// });
-// app.post("/animals", (req, res) => {
-//     const sql = `
-//       INSERT INTO animals
-//       (name, type, has_owner, age)
-//       VALUES (?, ?, ?, ?)
-//   `;
-//     con.query(
-//         sql, [req.body.name, req.body.type, req.body.has_owner, !req.body.age ? 0 : req.body.age],
-//         (err, results) => {
-//             if (err) throw err;
-//             res.send(results);
-//         }
-//     );
-// });
 
 // // DELETE
 // app.delete("/trees/:id", (req, res) => {

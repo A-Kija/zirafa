@@ -20,6 +20,7 @@ const con = mysql.createConnection({
     database: "labas",
 });
 
+
 // READ
 app.get("/trees", (req, res) => {
     const sql = `
