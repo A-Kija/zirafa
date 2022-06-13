@@ -10,14 +10,20 @@ function Back() {
 
     const [products, setProducts] = useState(null);
 
+    const [createProductData, setCreateProductData] = useState(null);
+
     useEffect(() => {
         axios.get('http://localhost:3003/admin/products')
         .then(res => setProducts(res.data));
-
     }, []);
 
+    useEffect(() => {
+        axios.post('http://localhost:3003/admin/products', createProductData)
+        .then(res => console.log(res.data));
+    }, [createProductData]);
+
     return (
-        <BackContext.Provider value={{products}}>
+        <BackContext.Provider value={{products, setCreateProductData}}>
             <div className="container">
                 <div className="row">
                     <NavBar></NavBar>
