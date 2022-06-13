@@ -10,6 +10,18 @@ monospace;
     font-family: $fs;
 }
 
+.up {
+    text-transform: uppercase;
+}
+
+.gray {
+    color: gray;
+}
+
+h2 {
+    color: skyblue;
+}
+
 .loader-bin {
     display: flex;
     width: 100%;

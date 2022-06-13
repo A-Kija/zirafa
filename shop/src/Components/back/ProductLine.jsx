@@ -21,7 +21,7 @@ function ProductLine({ product }) {
                     </div>
                 </div>
                 <div className="product-line__buttons">
-                    <button type="button" className="btn btn-outline-success mr-2 fu">Redagiuoti</button>
+                    <button type="button" className="btn btn-outline-success mr-2 fu">Redaguoti</button>
                     <button type="button" className="btn btn-outline-danger fu">Trinti</button>
                 </div>
 

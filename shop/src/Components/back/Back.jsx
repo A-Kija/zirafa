@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import { useEffect, useState } from 'react';
 import ProductsList from './ProductsList';
 import axios from 'axios';
+import ProductCreate from './ProductCreate';
 function Back() {
 
     const [products, setProducts] = useState(null);
@@ -20,9 +21,7 @@ function Back() {
             <div className="container">
                 <div className="row">
                     <NavBar></NavBar>
-                    <div className="col-5">
-                        CREATE
-                    </div>
+                    <ProductCreate></ProductCreate>
                     <ProductsList></ProductsList>
                 </div>
             </div>
