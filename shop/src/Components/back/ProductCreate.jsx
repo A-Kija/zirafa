@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import BackContext from "../../Contexts/BackContext";
 
 const empty = {
@@ -12,17 +12,19 @@ const empty = {
 
 function ProductCreate() {
 
-    const {setCreateProductData} = useContext(BackContext);
+    const { setCreateProductData } = useContext(BackContext);
+
+    const button = useRef();
 
     const [inputs, setInputs] = useState(empty);
 
-    const handleInputs = (e, input) => setInputs(i => ({...i, [input]: e.target.value}));
+    const handleInputs = (e, input) => setInputs(i => ({ ...i, [input]: e.target.value }));
 
     const create = () => {
         setCreateProductData(inputs);
         setInputs(empty);
+        button.current.blur();
     }
-
 
     return (
         <div className="col-5">
@@ -59,7 +61,7 @@ function ProductCreate() {
                             </div>
                             <div className="col-12">
                                 <div className="mt-3">
-                                <button type="button" className="btn btn-outline-dark fu up" onClick={create}>Sukurti</button>
+                                    <button type="button" ref={button} className="btn btn-outline-dark fu up" onClick={create}>Sukurti</button>
                                 </div>
                             </div>
                         </div>

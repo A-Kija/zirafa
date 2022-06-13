@@ -18,8 +18,8 @@ function Back() {
     }, []);
 
     useEffect(() => {
-        axios.post('http://localhost:3003/admin/products', createProductData)
-        .then(res => console.log(res.data));
+        // axios.post('http://localhost:3003/admin/products', createProductData)
+        // .then(res => console.log(res.data));
     }, [createProductData]);
 
     return (
