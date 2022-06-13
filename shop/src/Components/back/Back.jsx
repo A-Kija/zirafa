@@ -14,6 +14,7 @@ function Back() {
     const [message, setMessage] = useState({show: false});
 
     const [createProductData, setCreateProductData] = useState(null);
+    const [deleteProductData, setDeleteProductData] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:3003/admin/products')
@@ -29,6 +30,15 @@ function Back() {
             });
     }, [createProductData]);
 
+    useEffect(() => {
+        if (deleteProductData === null) return;
+        axios.delete('http://localhost:3003/admin/products/' + deleteProductData.id)
+            .then(_ => {
+                setLastProductsUpdate(Date.now());
+                showMessage('success', 'Produktas sėkmingai ištrintas');
+            });
+    }, [deleteProductData]);
+
 
     const showMessage = (type, text) => {
         setMessage({
@@ -36,11 +46,16 @@ function Back() {
             text,
             show: true
         });
-        setInterval(() => setMessage({show: false}), 8000);
+        setInterval(() => setMessage({show: false}), 4000);
     }
 
     return (
-        <BackContext.Provider value={{ products, setCreateProductData, message }}>
+        <BackContext.Provider value={{ 
+            products, 
+            setCreateProductData, 
+            message,
+            setDeleteProductData
+            }}>
             <div className="container">
                 <div className="row">
                     <NavBar></NavBar>

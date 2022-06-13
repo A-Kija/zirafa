@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import BackContext from "../../Contexts/BackContext";
+
 function ProductLine({ product }) {
+
+    const {setDeleteProductData} = useContext(BackContext);
 
     return (
         <li className="list-group-item">
@@ -22,7 +27,7 @@ function ProductLine({ product }) {
                 </div>
                 <div className="product-line__buttons">
                     <button type="button" className="btn btn-outline-success mr-2 fu">Redaguoti</button>
-                    <button type="button" className="btn btn-outline-danger fu">Trinti</button>
+                    <button type="button" className="btn btn-outline-danger fu" onClick={() => setDeleteProductData(product)}>Trinti</button>
                 </div>
 
             </div>
