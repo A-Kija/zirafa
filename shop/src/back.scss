@@ -1,3 +1,15 @@
+$fs:'Slabo 27px',
+serif;
+$fu: 'Ubuntu Mono',
+monospace;
+.fu {
+    font-family: $fu;
+}
+
+.fs {
+    font-family: $fs;
+}
+
 .loader-bin {
     display: flex;
     width: 100%;
@@ -110,6 +122,7 @@
                 color: gray;
                 font-size: 14px;
                 letter-spacing: 0.5px;
+                font-family: $fu;
             }
         }
         &__bottom {
@@ -123,5 +136,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        button {
+            text-transform: uppercase;
+        }
     }
 }
