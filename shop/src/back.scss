@@ -22,6 +22,17 @@ h2 {
     color: skyblue;
 }
 
+.message-bin {
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    div {
+        min-width: 400px;
+    }
+}
+
 .loader-bin {
     display: flex;
     width: 100%;

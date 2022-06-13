@@ -20,6 +20,7 @@ const con = mysql.createConnection({
     database: "big_shop"
 });
 
+
 // READ
 app.get("/admin/products", (req, res) => {
     const sql = `
