@@ -10,7 +10,7 @@ function ProductLine({ product }) {
                             {product.title}
                         </div>
                         <div className="product-line__content__top__price">
-                            {product.price}
+                            {(parseFloat(product.price)).toFixed(2)} eur
                         </div>
                         <div className="product-line__content__top__code">
                             {product.code}
@@ -21,7 +21,8 @@ function ProductLine({ product }) {
                     </div>
                 </div>
                 <div className="product-line__buttons">
-
+                    <button type="button" className="btn btn-outline-success mr-2">Redagiuoti</button>
+                    <button type="button" className="btn btn-outline-danger">Trinti</button>
                 </div>
 
             </div>
