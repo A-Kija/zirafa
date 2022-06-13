@@ -7,6 +7,7 @@ import ProductsList from './ProductsList';
 import axios from 'axios';
 import ProductCreate from './ProductCreate';
 import Message from './Message';
+import ProductEdit from './ProductEdit';
 function Back() {
 
     const [products, setProducts] = useState(null);
@@ -64,6 +65,7 @@ function Back() {
                 </div>
             </div>
             <Message></Message>
+            <ProductEdit></ProductEdit>
         </BackContext.Provider>
     );
 }

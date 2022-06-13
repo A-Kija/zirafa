@@ -33,6 +33,11 @@ h2 {
     }
 }
 
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.511);
+}
+
 .loader-bin {
     display: flex;
     width: 100%;
