@@ -69,17 +69,36 @@ app.delete("/admin/products/:id", (req, res) => {
 
 // EDIT
 app.put("/admin/products/:id", (req, res) => {
-    const sql = `
+    let sql;
+    let data;
+
+    if (!req.body.photo && !req.body.deletePhoto) {
+        sql = `
         UPDATE products
         SET title = ?, description = ?, code = ?, price = ?
         WHERE id = ?
     `;
-    con.query(sql, [req.body.title, req.body.description, req.body.code, req.body.price, req.params.id], (err, results) => {
+        data = [req.body.title, req.body.description, req.body.code, req.body.price, req.params.id];
+    } else if (req.body.deletePhoto) {
+        sql = `
+        UPDATE products
+        SET title = ?, description = ?, code = ?, price = ?, photo = NULL
+        WHERE id = ?
+    `;
+        data = [req.body.title, req.body.description, req.body.code, req.body.price, req.params.id];
+    } else {
+        sql = `
+        UPDATE products
+        SET title = ?, description = ?, code = ?, price = ?, photo = ?
+        WHERE id = ?
+    `;
+        data = [req.body.title, req.body.description, req.body.code, req.body.price, req.body.photo, req.params.id];
+    }
+    con.query(sql, data, (err, results) => {
         if (err) throw err;
         res.send(results);
     });
 });
-
 
 
 
