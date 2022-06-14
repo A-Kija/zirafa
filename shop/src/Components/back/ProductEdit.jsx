@@ -6,7 +6,7 @@ const empty = {
     title: '',
     price: '',
     code: '',
-    description: ''
+    description: '',
 };
 
 function ProductEdit() {
@@ -14,6 +14,7 @@ function ProductEdit() {
     const { modalProductData, setModalProductData, setEditProductData } = useContext(BackContext);
 
     const [inputs, setInputs] = useState(empty);
+    const [deletePhoto, setDeletePhoto] = useState(false);
     const fileInput = useRef();
 
     const handleInputs = (e, input) => setInputs(i => ({ ...i, [input]: e.target.value }));
@@ -22,11 +23,12 @@ function ProductEdit() {
         const file = fileInput.current.files[0];
         if (file) {
             getBase64(file)
-                .then(photo => setEditProductData({ ...inputs, photo, price: parseFloat(inputs.price), id: modalProductData.id }));
+                .then(photo => setEditProductData({ ...inputs, photo, price: parseFloat(inputs.price), id: modalProductData.id, deletePhoto: deletePhoto ? 1 : 0 }));
         } else {
-            setEditProductData({ ...inputs, price: parseFloat(inputs.price), id: modalProductData.id });
+            setEditProductData({ ...inputs, price: parseFloat(inputs.price), id: modalProductData.id, deletePhoto: deletePhoto ? 1 : 0 });
         }
         setModalProductData(null);
+        setDeletePhoto(false);
     }
 
     useEffect(() => {
@@ -36,7 +38,8 @@ function ProductEdit() {
             price: modalProductData.price,
             code: modalProductData.code,
             description: modalProductData.description
-        })
+        });
+        setDeletePhoto(false);
     }, [modalProductData])
 
     if (modalProductData === null) {
@@ -88,14 +91,21 @@ function ProductEdit() {
                                                 <input type="file" ref={fileInput} className="form-control" />
                                             </div>
                                         </div>
-                                        <div className="col-12">
+                                        <div className="col-8">
                                             <div className="edit-photo">
                                                 {
                                                     modalProductData.photo ? <img src={modalProductData.photo} alt={modalProductData.title} /> : null
                                                 }
                                             </div>
                                         </div>
-
+                                        <div className="col-4">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" id="delete-photo" onChange={() => setDeletePhoto(d => !d)} />
+                                                <label className="form-check-label" htmlFor="delete-photo">
+                                                    Trinti nuotrauką
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
