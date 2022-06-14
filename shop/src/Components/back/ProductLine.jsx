@@ -24,6 +24,11 @@ function ProductLine({ product }) {
                     <div className="product-line__content__bottom">
                         {product.description}
                     </div>
+                    <div className="product-line__content__photo">
+                        {
+                            product.photo ? <img src={product.photo} alt="{product.title}"/> : null
+                        }
+                    </div>
                 </div>
                 <div className="product-line__buttons">
                     <button type="button" className="btn btn-outline-success mr-2 fu" onClick={() => setModalProductData(product)}>Redaguoti</button>

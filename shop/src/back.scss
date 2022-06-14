@@ -158,6 +158,14 @@ h2 {
             font-size: 12px;
             text-align: justify;
         }
+        &__photo {
+            padding-top: 15px;
+            img {
+                height: auto;
+                max-height: 300px;
+                width: 100%;
+            }
+        }
     }
     &__buttons {
         padding-left: 25px;
