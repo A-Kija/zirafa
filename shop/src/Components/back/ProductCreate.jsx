@@ -21,15 +21,12 @@ function ProductCreate() {
     const [photoPreview, setPhotoPreview] = useState('');
 
     const handleInputs = (e, input) => setInputs(i => {
-        let value;
+        let value = e.target.value;
         if (input === 'price') {
-            value = e.target.value.replace(/,/g, '.');
-        } else {
-            value = e.target.value;
-        }
-        
+            value = value.replace(/[^0-9\.,]/g, '');
+            value = value.replace(/,/g, '.');
+        } 
         return { ...i, [input]: value }
-
     });
 
     const create = () => {
