@@ -34,6 +34,7 @@ function ProductCreate() {
         }
         setInputs(empty);
         button.current.blur();
+        fileInput.current.value = null;
     }
 
     return (
