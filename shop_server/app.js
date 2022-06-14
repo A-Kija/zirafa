@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 3003;
+app.use(express.json({ limit: '50mb' }));
+
 
 app.use(
     express.urlencoded({
@@ -11,6 +13,8 @@ app.use(express.json());
 
 const cors = require("cors");
 app.use(cors());
+
+
 
 const mysql = require("mysql");
 const con = mysql.createConnection({
@@ -38,11 +42,11 @@ app.get("/admin/products", (req, res) => {
 app.post("/admin/products", (req, res) => {
     const sql = `
         INSERT INTO products
-        (title, code, price, description)
-        VALUES (?, ?, ?, ?)
+        (title, code, price, description, photo)
+        VALUES (?, ?, ?, ?, ?)
     `;
     con.query(
-        sql, [req.body.title, req.body.code, req.body.price, req.body.description],
+        sql, [req.body.title, req.body.code, req.body.price, req.body.description, req.body.photo || null],
         (err, results) => {
             if (err) throw err;
             res.send(results);
