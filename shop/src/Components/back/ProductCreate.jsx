@@ -10,7 +10,6 @@ const empty = {
 };
 
 
-
 function ProductCreate() {
 
     const { setCreateProductData } = useContext(BackContext);
@@ -19,8 +18,19 @@ function ProductCreate() {
     const fileInput = useRef();
 
     const [inputs, setInputs] = useState(empty);
+    const [photoPreview, setPhotoPreview] = useState('');
 
-    const handleInputs = (e, input) => setInputs(i => ({ ...i, [input]: e.target.value }));
+    const handleInputs = (e, input) => setInputs(i => {
+        let value;
+        if (input === 'price') {
+            value = e.target.value.replace(/,/g, '.');
+        } else {
+            value = e.target.value;
+        }
+        
+        return { ...i, [input]: value }
+
+    });
 
     const create = () => {
 
@@ -35,6 +45,18 @@ function ProductCreate() {
         setInputs(empty);
         button.current.blur();
         fileInput.current.value = null;
+        setPhotoPreview('');
+    }
+
+    const newPhoto = () => {
+
+        const file = fileInput.current.files[0];
+        if (file) {
+            getBase64(file).then(photo => setPhotoPreview(photo));
+        } else {
+            setPhotoPreview('')
+        }
+
     }
 
     return (
@@ -70,15 +92,20 @@ function ProductCreate() {
                                     <textarea className="form-control" rows="3" value={inputs.description} onChange={e => handleInputs(e, 'description')}></textarea>
                                 </div>
                             </div>
-                            <div className="col-12">
+                            <div className="col-8">
                                 <div className="form-group">
                                     <label className="fu gray">Nuotrauka:</label>
-                                    <input type="file" ref={fileInput} className="form-control" />
+                                    <input type="file" ref={fileInput} className="form-control" onChange={newPhoto} />
+                                    <div className="mt-5">
+                                    <button type="button" ref={button} className="btn btn-outline-dark fu up" onClick={create}>Sukurti</button>
+                                </div>
                                 </div>
                             </div>
-                            <div className="col-12">
-                                <div className="mt-3">
-                                    <button type="button" ref={button} className="btn btn-outline-dark fu up" onClick={create}>Sukurti</button>
+                            <div className="col-4">
+                                <div className="preview">
+                                    {
+                                        photoPreview ? <img src={photoPreview} alt="preview" /> : null
+                                    }
                                 </div>
                             </div>
                         </div>
