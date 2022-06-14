@@ -18,6 +18,7 @@ function Back() {
 
     const [createProductData, setCreateProductData] = useState(null);
     const [deleteProductData, setDeleteProductData] = useState(null);
+    const [editProductData, setEditProductData] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:3003/admin/products')
@@ -42,6 +43,15 @@ function Back() {
             });
     }, [deleteProductData]);
 
+    useEffect(() => {
+        if (editProductData === null) return;
+        axios.put('http://localhost:3003/admin/products/' + editProductData.id, editProductData)
+            .then(_ => {
+                setLastProductsUpdate(Date.now());
+                showMessage('success', 'Produktas redaguotas sėkmingai');
+            });
+    }, [editProductData]);
+
 
     const showMessage = (type, text) => {
         setMessage({
@@ -59,7 +69,8 @@ function Back() {
             message,
             setDeleteProductData,
             modalProductData,
-            setModalProductData
+            setModalProductData,
+            setEditProductData
             }}>
             <div className="container">
                 <div className="row">

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BackContext from "../../Contexts/BackContext";
 
 const empty = {
@@ -10,16 +10,26 @@ const empty = {
 
 function ProductEdit() {
 
-    const { modalProductData } = useContext(BackContext);
+    const { modalProductData, setModalProductData, setEditProductData } = useContext(BackContext);
 
     const [inputs, setInputs] = useState(empty);
 
     const handleInputs = (e, input) => setInputs(i => ({ ...i, [input]: e.target.value }));
 
     const edit = () => {
-        // setCreateProductData({...inputs, price: parseFloat(inputs.price)});
-        setInputs(empty);
+        setEditProductData({...inputs, price: parseFloat(inputs.price), id: modalProductData.id});
+        setModalProductData(null);
     }
+
+    useEffect(() => {
+        if (modalProductData === null) return;
+        setInputs({
+            title: modalProductData.title,
+            price: modalProductData.price,
+            code: modalProductData.code,
+            description: modalProductData.description
+        })
+    }, [modalProductData])
 
     if (modalProductData === null) {
         return null;
@@ -31,7 +41,7 @@ function ProductEdit() {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h2>Redaguoti produktą</h2>
-                        <button type="button" className="close">
+                        <button type="button" className="close" onClick={() => setModalProductData(null)}>
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -70,8 +80,8 @@ function ProductEdit() {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-outline-secondary fu up">Uždaryti</button>
-                        <button type="button" className="btn btn-outline-primary fu up">Išsaugoti</button>
+                        <button type="button" className="btn btn-outline-secondary fu up" onClick={() => setModalProductData(null)}>Uždaryti</button>
+                        <button type="button" className="btn btn-outline-primary fu up" onClick={edit}>Išsaugoti</button>
                     </div>
                 </div>
             </div>

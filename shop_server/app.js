@@ -63,32 +63,22 @@ app.delete("/admin/products/:id", (req, res) => {
 });
 
 
-// // EDIT
-// app.put("/trees/:id", (req, res) => {
-//     const sql = `
-//         UPDATE trees
-//         SET title = ?, type = ?, height = ?
-//         WHERE id = ?
-//     `;
-//     con.query(sql, [req.body.title, req.body.type, req.body.height, req.params.id], (err, results) => {
-//         if (err) throw err;
-//         res.send(results);
-//     });
-// });
-// app.put("/animals/:id", (req, res) => {
-//     const sql = `
-//       UPDATE animals
-//       SET name = ?, type = ?, has_owner = ?, age = ?
-//       WHERE id = ?
-//   `;
-//     con.query(sql, [req.body.name, req.body.type, req.body.has_owner, !req.body.age ? 0 : req.body.age, req.params.id], (err, results) => {
-//         if (err) throw err;
-//         res.send(results);
-//     });
-// });
+// EDIT
+app.put("/admin/products/:id", (req, res) => {
+    const sql = `
+        UPDATE products
+        SET title = ?, description = ?, code = ?, price = ?
+        WHERE id = ?
+    `;
+    con.query(sql, [req.body.title, req.body.description, req.body.code, req.body.price, req.params.id], (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
+
 
 
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Parduotuvinis Bebras klausosi ${port} porto.`);
 });
