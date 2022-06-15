@@ -111,5 +111,19 @@
                 }
             }
         }
+        .bar {
+            .sort {
+                margin: 20px;
+                padding: 30px;
+                border: 1px solid gray;
+                select {
+                    outline: none;
+                }
+                span {
+                    margin-right: 6px;
+                    color: coral;
+                }
+            }
+        }
     }
 }

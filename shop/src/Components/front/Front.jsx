@@ -7,6 +7,7 @@ import Products from './Products';
 import TopBar from './TopBar';
 import axios from 'axios';
 import { getProductsFromServer } from '../../Actions/products';
+import Bar from './Bar';
 
 
 
@@ -21,10 +22,11 @@ function Front() {
   }, []);
 
   return (
-    <FrontContext.Provider value={{products}}>
+    <FrontContext.Provider value={{products, dp}}>
       <div id="shop">
         <div className="bin">
           <TopBar></TopBar>
+          <Bar></Bar>
           {
             products !== null ? <Products></Products> : <Loader></Loader>
           }
