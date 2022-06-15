@@ -1,9 +1,9 @@
-function Product() {
+function Product({product}) {
 
     return (
         <div className="product">
             <div className="product__bin">
-            sdfsd
+            {product.title}
             </div>
         </div>
     );

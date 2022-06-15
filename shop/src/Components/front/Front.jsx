@@ -21,7 +21,7 @@ function Front() {
   })
 
   return (
-    <FrontContext.Provider value={{}}>
+    <FrontContext.Provider value={{products}}>
       <div id="shop">
         <div className="bin">
           <TopBar></TopBar>
