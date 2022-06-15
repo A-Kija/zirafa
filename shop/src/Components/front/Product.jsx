@@ -1,4 +1,13 @@
+import { useState } from "react";
+
 function Product({ product }) {
+
+    const [count, setCount] = useState(1);
+
+    const clickCount = e => {
+        const count = parseInt(e.target.value);
+        setCount(count > 0 ? count : 1);
+    }
 
     return (
         <div className="product">
@@ -18,7 +27,11 @@ function Product({ product }) {
                 </div>
                 <div className="product__bin__bottom">
                     <span>{product.price.toFixed(2)} EUR</span>
-                    <button>Pirkti</button>
+                    <div>
+                        <input type="number" value={count} onChange={clickCount} />
+                        <button>Pirkti</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
