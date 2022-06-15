@@ -11,7 +11,6 @@ function Product({ product }) {
                         {
                             product.photo ? <img src={product.photo} alt={product.title} /> : <img src="http://localhost:3000/no-image.jpg" alt={product.title} />
                         }
-                        
                     </div>
                     <div className="product__bin__mid__desc">
                         <p>{product.description}</p>

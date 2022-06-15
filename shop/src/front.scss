@@ -40,6 +40,10 @@
                 height: 350px;
                 border: 1px solid skyblue;
                 padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
                 &__top {
                     width: 100%;
                     display: flex;
