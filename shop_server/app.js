@@ -101,6 +101,21 @@ app.put("/admin/products/:id", (req, res) => {
 });
 
 
+
+// READ
+app.get("/products", (req, res) => {
+    const sql = `
+    SELECT
+    *
+    FROM products
+`;
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`Parduotuvinis Bebras klausosi ${port} porto.`);
 });
