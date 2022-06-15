@@ -40,6 +40,40 @@
                 height: 350px;
                 border: 1px solid skyblue;
                 padding: 10px;
+                &__top {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                &__mid {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    &__img {
+                        width: 50%;
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: center;
+                        img {
+                            height: auto;
+                            max-height: 220px;
+                            max-width: 100%;
+                            display: block;
+                        }
+                    }
+                    &__desc {
+                        width: 50%;
+                        p {
+                            text-align: justify;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding-left: 7px;
+                            max-height: 220px;
+                        }
+                    }
+                }
             }
         }
     }
