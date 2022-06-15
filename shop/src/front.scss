@@ -78,6 +78,29 @@
                         }
                     }
                 }
+                &__bottom {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    span {
+                        font-size: 28px;
+                        color: coral;
+                    }
+                    button {
+                        border: none;
+                        outline: none;
+                        background-color: darksalmon;
+                        font-size: 28px;
+                        letter-spacing: 1px;
+                        border-radius: 3px;
+                        color: white;
+                        transition: all 0.3s;
+                        &:hover {
+                            background-color: rgb(186, 108, 82);
+                        }
+                    }
+                }
             }
         }
     }

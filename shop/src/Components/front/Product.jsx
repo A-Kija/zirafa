@@ -17,7 +17,7 @@ function Product({ product }) {
                     </div>
                 </div>
                 <div className="product__bin__bottom">
-                    <span>{product.price}</span>
+                    <span>{product.price.toFixed(2)} EUR</span>
                     <button>Pirkti</button>
                 </div>
             </div>
