@@ -18,7 +18,7 @@ function Front() {
     axios.get('http://localhost:3003/products')
       .then(res => dp(getProductsFromServer(res.data))
       )
-  })
+  }, []);
 
   return (
     <FrontContext.Provider value={{products}}>
