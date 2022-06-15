@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { sortProducts } from "../../Actions/products";
 import FrontContext from "../../Contexts/FrontContext";
 
@@ -8,13 +8,16 @@ function Bar() {
 
     const {dp} = useContext(FrontContext);
 
-    const sort = useCallback(sortType => {
-        dp(sortProducts(sortType))
-    }, [dp]);
+    const run = useRef(true);
 
     useEffect(() => {
-        sort(select);
-    }, [select, sort]);
+        if (run.current) {
+            run.current = false;
+            return;
+        }
+        console.log(select)
+        dp(sortProducts(select));
+    }, [select, dp]);
 
     return (
         <div className="bar">
