@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import FrontContext from "../../Contexts/FrontContext";
+import filterShow from "../../Functions/filterShow";
 import Product from "./Product";
 
 function Products() {
@@ -9,7 +10,7 @@ function Products() {
     return (
         <div className="products">
             {
-                products.map(p => <Product key={p.id} product={p}></Product>)
+                products.map(p => filterShow(p.show) ? <Product key={p.id} product={p}></Product> : null)
             }
         </div>
     );

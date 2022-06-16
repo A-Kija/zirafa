@@ -1,4 +1,4 @@
-import { GET_PRODUCTS_FROM_SERVER, SORT_PRODUCTS } from "../Constants/types";
+import { FILTER_PRICE, GET_PRODUCTS_FROM_SERVER, SHOW_PHOTO, SORT_PRODUCTS } from "../Constants/types";
 
 export function getProductsFromServer(products) {
     return {
@@ -11,5 +11,20 @@ export function sortProducts(sortType) {
     return {
         type: SORT_PRODUCTS,
         payload: sortType
+    }
+}
+
+
+export function filterPrice(price) {
+    return {
+        type: FILTER_PRICE,
+        payload: price
+    }
+}
+
+export function filterShowPhoto(yes) {
+    return {
+        type: SHOW_PHOTO,
+        payload: yes
     }
 }

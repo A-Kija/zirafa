@@ -112,6 +112,9 @@
             }
         }
         .bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
             .sort {
                 margin: 20px;
                 padding: 30px;
@@ -122,6 +125,21 @@
                 span {
                     margin-right: 6px;
                     color: coral;
+                }
+                .range {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    i {
+                        margin-right: 15px;
+                        width: 70px;
+                    }
+                    b {
+                        padding: 0 4px;
+                    }
+                    .max {
+                        transform: rotate(180deg);
+                    }
                 }
             }
         }

@@ -23,7 +23,7 @@ function ProductCreate() {
     const handleInputs = (e, input) => setInputs(i => {
         let value = e.target.value;
         if (input === 'price') {
-            value = value.replace(/[^0-9\.,]/g, '');
+            value = value.replace(/[^0-9.,]/g, '');
             value = value.replace(/,/g, '.');
         } 
         return { ...i, [input]: value }
